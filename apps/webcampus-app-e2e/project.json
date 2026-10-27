@@ -1,0 +1,9 @@
+{
+  "name": "webcampus-app-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/webcampus-app-e2e/src",
+  "implicitDependencies": ["webcampus-app"],
+  "// targets": "to see all targets run: nx show project webcampus-app-e2e --web",
+  "targets": {}
+}
