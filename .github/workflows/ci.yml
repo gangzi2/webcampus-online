@@ -1,44 +1,44 @@
-name: CI
+name: WebCampus CI - Build & Test
 
 on:
   push:
-    branches:
-      - master
+    branches: [main, master]
   pull_request:
-
-permissions:
-  actions: read
-  contents: read
+    branches: [main, master]
 
 jobs:
-  main:
+  build:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v7
-        with:
-          filter: tree:0
-          fetch-depth: 0
+      - name: 📥 Cloner le dépôt
+        uses: actions/checkout@v4
 
-      # This enables task distribution via Nx Cloud
-      # Run this command as early as possible, before dependencies are installed
-      # Configure Nx Agents and task distribution in .nx/ci-config.yaml
-      # Learn more at https://nx.dev/ci/reference/nx-cloud-cli#nx-cloud-start-nx-agents
-      # Connect your workspace by running "nx connect" and uncomment this line to enable task distribution
-      # - run: npx nx start-nx-agents
-
-      # Cache node_modules
-      - uses: actions/setup-node@v6
+      # -----------------------------------------
+      # 1. COMPILATION FRONTEND ANGULAR (Nx)
+      # -----------------------------------------
+      - name: 🟢 Installer Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: 24
+          node-version: '22'
           cache: 'npm'
 
-      - run: npm ci
-      - run: npx playwright install --with-deps
+      - name: 📦 Installer les dépendances Node
+        run: npm ci
 
-      # Prepend any command with "nx record --" to record its logs to Nx Cloud
-      # - run: npx nx record -- echo Hello World
-      # When you enable task distribution, run the e2e-ci task instead of e2e
-      - run: npx nx run-many -t lint test build e2e
-      # Nx Cloud recommends fixes for failures to help you get CI green faster. Learn more: https://nx.dev/ci/features/self-healing-ci
-      - run: npx nx fix-ci
-        if: always()
+      - name: ⚡ Compiler l'application Angular (Nx)
+        run: npx nx build Webcampus-app
+
+      # -----------------------------------------
+      # 2. COMPILATION BACKEND .NET 10
+      # -----------------------------------------
+      - name: 🔷 Installer le SDK .NET 10
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: ⚙️ Restaurer les packages .NET
+        run: dotnet restore apps/backend_api/backend_api.csproj
+
+      - name: 🔨 Compiler le Backend .NET
+        run: dotnet build apps/backend_api/backend_api.csproj --configuration Release --no-restore
