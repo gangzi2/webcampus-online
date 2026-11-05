@@ -1,0 +1,16 @@
+{
+  "name": "backend-api",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "targets": {
+    "serve": {
+      "command": "dotnet watch run --project apps/backend_api/backend_api.csproj --launch-profile http"
+    },
+    "build": {
+      "command": "dotnet build apps/backend_api/backend_api.csproj"
+    },
+    "test": {
+      "command": "dotnet test apps/backend_api/backend_api.csproj"
+    }
+  }
+}

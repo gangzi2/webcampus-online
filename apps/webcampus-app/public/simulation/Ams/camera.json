@@ -1,0 +1,19 @@
+{
+  "CAM_MAIN": {
+    "type": "FPS",
+    "param": {
+      "position": [0, 0, 0],
+      "target": [-1800, 0, 2000],
+      "switchTime": 3
+    }
+  },
+
+  "CAM_RMU910_TGBT1_DISGENERAL": {
+    "type": "FIX",
+    "param": {
+      "position": [-410, 141, -1414],
+      "target": [-410, 141, -1495],
+      "switchTime": 3
+    }
+  }
+}

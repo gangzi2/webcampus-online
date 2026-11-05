@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { NxWelcome } from './nx-welcome';
-
+import { VrSceneComponent } from '../core/threejs/mainComponent';
 @Component({
-  imports: [NxWelcome, RouterModule],
+  imports: [RouterModule, VrSceneComponent],
   selector: 'app-root',
   templateUrl: './app.html',
   styleUrl: './app.scss',

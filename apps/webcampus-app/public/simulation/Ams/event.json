@@ -1,0 +1,365 @@
+{
+  "objects": {
+    "MAIN3D": {
+      "type": "FAKE_OBJECT",
+      "event": {
+        "Camera_Swtich_OnClick": { "name": "CAM_MAIN" }
+      },
+      "object": {
+        "ams": {
+          "type": "STANDARD_OBJECT",
+          "event": {},
+          "object": {
+            "ehouse_porte_d": {
+              "type": "STANDARD_OBJECT",
+              "event": {
+                "RotationOnClick": {
+                  "variable_name": "3D_ehouse_porte_d",
+                  "variable_init": 0,
+                  "x": 0,
+                  "y": -90,
+                  "z": 0,
+                  "duration": 1,
+                  "propagate": true
+                },
+                "Collision": {
+                  "variable_name": "3D_ehouse_porte_d",
+                  "variable_init": 0,
+                  "HideOnValue": 1
+                }
+              }
+            },
+            "ehouse_porte_g": {
+              "type": "STANDARD_OBJECT",
+              "event": {
+                "RotationOnClick": {
+                  "variable_name": "3D_ehouse_porte_g",
+                  "variable_init": 0,
+                  "x": 0,
+                  "y": 90,
+                  "z": 0,
+                  "duration": 1,
+                  "propagate": true
+                },
+                "Collision": {
+                  "variable_name": "3D_ehouse_porte_g",
+                  "variable_init": 0,
+                  "HideOnValue": 1
+                }
+              }
+            },
+
+            "ehouse_hvac_1": {
+              "type": "STANDARD_OBJECT",
+              "event": {
+                "EvalOnClick": {
+                  "script": "if(variableManager.getValue('3D_HOME_SCENARIO') != '') {ihmManager.open('popup_scn1_hvac');}"
+                },
+                "MaterialOverride": {
+                  "variable_name": "2D_SCN1_DEFAUT",
+                  "variable_init": 0,
+                  "value": 1,
+                  "lighting": false,
+                  "method": "facticeBox",
+                  "alpha": 0.55,
+                  "diffuseColor": "1;0;0"
+                }
+              }
+            },
+            "ehouse_hvac_2": {
+              "type": "STANDARD_OBJECT",
+              "event": {
+                "EvalOnClick": {
+                  "script": "if(variableManager.getValue('3D_HOME_SCENARIO') != '') {ihmManager.open('popup_scn1_hvac');}"
+                },
+                "MaterialOverride": {
+                  "variable_name": "2D_SCN1_DEFAUT",
+                  "variable_init": 0,
+                  "value": 1,
+                  "lighting": false,
+                  "method": "facticeBox",
+                  "alpha": 0.55,
+                  "diffuseColor": "1;0;0"
+                }
+              }
+            },
+
+            "INCOMER2_capot": {
+              "type": "STANDARD_OBJECT",
+              "event": {
+                "EvalOnClick": {
+                  "script": "variableManager.setValue('3D_INCOMER2_DOOR_VISIBILITY', 0, true);"
+                },
+                "Visibility": {
+                  "variable_name": "3D_INCOMER2_DOOR_VISIBILITY",
+                  "variable_init": 1
+                }
+              }
+            },
+            "sm6_temperature": {
+              "type": "STANDARD_OBJECT",
+              "event": {
+                "EvalOnClick": {
+                  "script": "if(variableManager.getValue('3D_HOME_SCENARIO') != '') {ihmManager.open('popup_scn2_sm6');}"
+                },
+                "MaterialOverride": {
+                  "variable_name": "3D_INCOMER2_ACTIVE",
+                  "variable_init": 0,
+                  "value": 1,
+                  "lighting": false,
+                  "method": "facticeBox",
+                  "alpha": 0.55,
+                  "diffuseColor": "1;0;0"
+                }
+              }
+            },
+
+            "Trihal_capot": {
+              "type": "STANDARD_OBJECT",
+              "event": {
+                "EvalOnClick": {
+                  "script": "variableManager.setValue('3D_TRIHAL_DOOR_VISIBILITY', 0, true);"
+                },
+                "Visibility": {
+                  "variable_name": "3D_TRIHAL_DOOR_VISIBILITY",
+                  "variable_init": 1
+                }
+              }
+            },
+
+            "Trihal_sonde1": {
+              "type": "STANDARD_OBJECT",
+              "event": {
+                "EvalOnClick": {
+                  "script": "if(variableManager.getValue('3D_HOME_SCENARIO') != '') {ihmManager.open('popup_scn1_hvac');}"
+                },
+                "MaterialOverride": {
+                  "variable_name": "2D_SCN1_DEFAUT",
+                  "variable_init": 0,
+                  "value": 1,
+                  "lighting": false,
+                  "method": "facticeBox",
+                  "alpha": 0.55,
+                  "diffuseColor": "1;0;0"
+                }
+              }
+            },
+            "Trihal_sonde2": {
+              "type": "STANDARD_OBJECT",
+              "event": {
+                "EvalOnClick": {
+                  "script": "if(variableManager.getValue('3D_HOME_SCENARIO') != '') {ihmManager.open('popup_scn1_hvac');}"
+                },
+                "MaterialOverride": {
+                  "variable_name": "2D_SCN1_DEFAUT",
+                  "variable_init": 0,
+                  "value": 1,
+                  "lighting": false,
+                  "method": "facticeBox",
+                  "alpha": 0.55,
+                  "diffuseColor": "1;0;0"
+                }
+              }
+            },
+            "Trihal_sonde3": {
+              "type": "STANDARD_OBJECT",
+              "event": {
+                "EvalOnClick": {
+                  "script": "if(variableManager.getValue('3D_HOME_SCENARIO') != '') {ihmManager.open('popup_scn1_hvac');}"
+                },
+                "MaterialOverride": {
+                  "variable_name": "2D_SCN1_DEFAUT",
+                  "variable_init": 0,
+                  "value": 1,
+                  "lighting": false,
+                  "method": "facticeBox",
+                  "alpha": 0.55,
+                  "diffuseColor": "1;0;0"
+                }
+              }
+            },
+            "UPS4_LED8_Alpha": {
+              "type": "STANDARD_OBJECT",
+              "event": {
+                "Texture": {
+                  "0": "Led_Round_Off.png",
+                  "1": "Led_Round_Red.png",
+                  "variable_name": "2D_SCN1_UPS_ALARM",
+                  "variable_init": 0
+                }
+              }
+            },
+            "RMU910_TGBT1_DISGENERAL": {
+              "type": "FAKE_OBJECT",
+              "event": {
+                "Camera_Swtich_OnClick": {
+                  "name": "CAM_RMU910_TGBT1_DISGENERAL"
+                }
+              },
+              "object": {
+                "TGHQ1_Etiquette_popup": {
+                  "type": "STANDARD_OBJECT",
+                  "event": {
+                    "EvalOnClick": {
+                      "script": "if(variableManager.getValue('3D_HOME_SCENARIO') != '') {ihmManager.open('popup_scn3_mp');}"
+                    },
+                    "MaterialOverride": {
+                      "variable_name": "3D_SCN3_DEFAULT",
+                      "variable_init": 0,
+                      "value": 1,
+                      "lighting": false,
+                      "method": "facticeBox",
+                      "alpha": 0.55,
+                      "diffuseColor": "1;0;0"
+                    }
+                  }
+                },
+
+                "TGBT1_DISGENERAL_SocleUp002": {
+                  "type": "STANDARD_OBJECT",
+                  "event": {
+                    "Translation": {
+                      "variable_name": "3D_L4_BRMG_TGBT1-Q01.iDisconnected",
+                      "variable_init": 0,
+                      "x": 0,
+                      "y": 0,
+                      "z": 7,
+                      "duration": 2
+                    }
+                  },
+                  "object": {
+                    "TGBT1_DISGENERAL_Dis_Off_led002": {
+                      "type": "STANDARD_OBJECT",
+                      "event": {
+                        "Visibility": {
+                          "variable_name": "3D_L4_BRMG_TGBT1-Q01.iPositionOff",
+                          "variable_init": 0
+                        }
+                      }
+                    },
+                    "TGBT1_DISGENERAL_Charged_On_led002": {
+                      "type": "STANDARD_OBJECT",
+                      "event": {
+                        "Visibility": {
+                          "variable_name": "3D_L4_BRMG_TGBT1-Q01.iStateRearm",
+                          "variable_init": 0
+                        }
+                      }
+                    },
+                    "TGBT1_DISGENERAL_DisOff002": {
+                      "type": "STANDARD_OBJECT",
+                      "event": {
+                        "Mouse_Click": {
+                          "variable_name": "3D_L4_BRMG_TGBT1-Q01.oPositionOffCmd",
+                          "variable_init": 0,
+                          "edgeOnly": true
+                        },
+                        "Translation": {
+                          "variable_name": "3D_L4_BRMG_TGBT1-Q01.iPositionOff",
+                          "variable_init": 0,
+                          "x": 0,
+                          "y": 0,
+                          "z": -0.9,
+                          "duration": 0.1,
+                          "propagate": true
+                        }
+                      }
+                    },
+                    "TGBT1_DISGENERAL_DisOn002": {
+                      "type": "STANDARD_OBJECT",
+                      "event": {
+                        "Mouse_Click": {
+                          "variable_name": "3D_L4_BRMG_TGBT1-Q01.oPositionOnCmd",
+                          "variable_init": 0,
+                          "edgeOnly": true
+                        },
+                        "Translation": {
+                          "variable_name": "3D_L4_BRMG_TGBT1-Q01.iPositionOn",
+                          "variable_init": 0,
+                          "x": 0,
+                          "y": 0,
+                          "z": -0.9,
+                          "duration": 0.1,
+                          "propagate": true
+                        }
+                      }
+                    },
+                    "TGBT1_DISGENERAL_Rearmement002": {
+                      "type": "STANDARD_OBJECT",
+                      "event": {
+                        "Mouse_Click": {
+                          "variable_name": "3D_L4_BRMG_TGBT1-Q01.oRearmamentCmd",
+                          "variable_init": 0,
+                          "edgeOnly": true
+                        },
+                        "Rotation": {
+                          "variable_name": "3D_L4_BRMG_TGBT1-Q01.iRearm",
+                          "variable_init": 0,
+                          "x": 80,
+                          "y": 0,
+                          "z": 0,
+                          "duration": 0.5,
+                          "propagate": false,
+                          "loop": true
+                        }
+                      }
+                    },
+                    "TGBT1_DISGENERAL_Micro_Led01": {
+                      "type": "STANDARD_OBJECT",
+                      "event": {
+                        "Visibility": {
+                          "variable_name": "3D_L4_BRMG_TGBT1-Q01.tripLed",
+                          "variable_init": 0
+                        }
+                      }
+                    },
+                    "TGBT1_DISGENERAL_Micro_Screen002": {
+                      "type": "STANDARD_OBJECT",
+                      "event": {
+                        "Visibility": {
+                          "variable_name": "3D_TGBT_MICROSCREEN",
+                          "value": 1,
+                          "variable_init": 0
+                        },
+                        "RttDynamicText": {
+                          "width": 80,
+                          "height": 40,
+                          "img_bkg": "Micrologic_Screen_On.jpg",
+                          "text": [
+                            {
+                              "variable_name": "3D_L4_BRMG_TGBT1-Q01.iIntensity",
+                              "variable_init": 1000,
+                              "template": "tgbt_micro_screen_i",
+                              "prefix": "",
+                              "suffix": " A",
+                              "precision": 0,
+                              "interligne": 25
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  }
+                },
+
+                "TGBT1_DISGENERAL_btn_connected_Alpha002": {
+                  "type": "STANDARD_OBJECT",
+                  "event": {
+                    "RotationOnValue2": {
+                      "0": [45, 0, 0],
+                      "1": [-45, 0, 0],
+                      "2": [0, 0, 0],
+                      "variable_name": "3D_L4_BRMG_TGBT1-Q01.iDisconnected",
+                      "variable_init": 2,
+                      "duration": 0.2
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

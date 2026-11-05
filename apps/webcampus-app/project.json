@@ -21,7 +21,7 @@
             "input": "apps/webcampus-app/public"
           }
         ],
-        "styles": ["apps/webcampus-app/src/styles.scss"],
+        "styles": ["apps/webcampus-app/src/styles.css"],
         "server": "apps/webcampus-app/src/main.server.ts",
         "ssr": {
           "entry": "apps/webcampus-app/src/server.ts"

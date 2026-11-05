@@ -1,0 +1,65 @@
+{
+  "main": {
+    "variableLoop": 30,
+    "gameStepLoop": 30
+  },
+  "ihm": ["simulation/Ams/ihm.js"],
+  "checkTerrainHeight": true,
+  "commentaire1": "used in SceneLoader",
+  "SceneLoader": {
+    "camera_near": 1.0,
+    "camera_far": 1000.0,
+    "camera_aspect": 1.33333,
+    "light_map_extension": "_RawTotalLightingMap",
+    "light_map_directory": "textureDir/LightMap",
+    "camera_main": {
+      "name": "CAM_MAIN",
+      "near": 5.0,
+      "far": 15000.0,
+      "fov": 50.0,
+      "aspect": 1.33333,
+      "type": "pointerlock"
+    },
+    "defaultHeight": 170
+  },
+
+  "commentaire2": "used in ChooseRoom",
+  "ChooseRoom": {
+    "firstloadedfile": "ams",
+    "firstroom": "ams",
+    "ams": {
+      "path_scene": "simulation/Ams/ams.js",
+      "path_event": "simulation/Ams/Event.js",
+      "path_camera": "simulation/Ams/Camera.js",
+      "path_collision": "simulation/Ams/CollisionBox.js",
+      "positionStart": [-500, 0, -260],
+      "rotationStart": 0
+    }
+  },
+
+  "environment": {
+    "lights": [
+      {
+        "type": "AmbientLight",
+        "hex": "0xffffff",
+        "intensity": 2
+      },
+      {
+        "type": "SpotLight",
+        "hex": "0xffffff",
+        "intensity": 1,
+        "distance": 0,
+        "angle": 2,
+        "exponent": 10,
+        "position": [1, 2, 1],
+        "target": [0, 0, 0],
+        "castShadow": true,
+        "onlyShadow": true,
+        "shadowDarkness": 0.3,
+        "shadowMapWidth": 1024,
+        "shadowMapHeight": 1024,
+        "shadowCameraVisible": false
+      }
+    ]
+  }
+}
