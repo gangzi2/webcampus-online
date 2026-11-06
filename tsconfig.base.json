@@ -10,24 +10,63 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
-    "lib": ["es2020", "dom"],
+    "lib": [
+      "es2020",
+      "dom"
+    ],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "strict": false,
     "paths": {
-      "@spartan-ng/helm/button": ["./libs/ui/button/src/index.ts"],
-      "@spartan-ng/helm/utils": ["./libs/ui/utils/src/index.ts"],
-      "@spartan-ng/helm/typography": ["./libs/ui/typography/src/index.ts"],
-      "@webcampus/ui/sidebar": ["./libs/ui/sidebar/src/index.ts"],
-      "@webcampus/ui/common": ["./libs/ui/common/src/index.ts"],
-      "@spartan-ng/helm/sidebar": ["./libs/ui/sidebar/src/index.ts"],
-      "@spartan-ng/helm/input": ["./libs/ui/input/src/index.ts"],
-      "@spartan-ng/helm/separator": ["./libs/ui/separator/src/index.ts"],
-      "@spartan-ng/helm/sheet": ["./libs/ui/sheet/src/index.ts"],
-      "@spartan-ng/helm/skeleton": ["./libs/ui/skeleton/src/index.ts"],
-      "@spartan-ng/helm/tooltip": ["./libs/ui/tooltip/src/index.ts"],
-      "@webcampus2/common": ["./libs/common/src/index.ts"]
+      "@spartan-ng/helm/button": [
+        "./libs/ui/button/src/index.ts"
+      ],
+      "@spartan-ng/helm/utils": [
+        "./libs/ui/utils/src/index.ts"
+      ],
+      "@spartan-ng/helm/typography": [
+        "./libs/ui/typography/src/index.ts"
+      ],
+      "@webcampus/ui/sidebar": [
+        "./libs/ui/sidebar/src/index.ts"
+      ],
+      "@webcampus/ui/common": [
+        "./libs/ui/common/src/index.ts"
+      ],
+      "@spartan-ng/helm/sidebar": [
+        "./libs/ui/sidebar/src/index.ts"
+      ],
+      "@spartan-ng/helm/input": [
+        "./libs/ui/input/src/index.ts"
+      ],
+      "@spartan-ng/helm/separator": [
+        "./libs/ui/separator/src/index.ts"
+      ],
+      "@spartan-ng/helm/sheet": [
+        "./libs/ui/sheet/src/index.ts"
+      ],
+      "@spartan-ng/helm/skeleton": [
+        "./libs/ui/skeleton/src/index.ts"
+      ],
+      "@spartan-ng/helm/tooltip": [
+        "./libs/ui/tooltip/src/index.ts"
+      ],
+      "@webcampus2/common": [
+        "./libs/common/src/index.ts"
+      ],
+      "@spartan-ng/helm/breadcrumb": [
+        "./libs/ui/breadcrumb/src/index.ts"
+      ],
+      "@spartan-ng/helm/input-group": [
+        "./libs/ui/input-group/src/index.ts"
+      ],
+      "@spartan-ng/helm/textarea": [
+        "./libs/ui/textarea/src/index.ts"
+      ]
     }
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
 }

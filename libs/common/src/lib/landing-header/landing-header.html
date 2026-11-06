@@ -1,0 +1,125 @@
+<header class="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur-md">
+    <nav class="mx-auto flex h-28 max-w-8xl items-center justify-between px-6 lg:px-10">
+
+        <!-- Logo -->
+        <a href="/" class="flex shrink-0 items-center gap-3">
+            <div class="flex size-10 items-center justify-center rounded-xl bg-primary text-primary-foreground">
+                <ng-icon name="lucideGraduationCap" class="size-6" />
+            </div>
+
+            <span class="text-3xl font-extrabold tracking-tight text-foreground">
+                Web<span class="text-primary">Campus</span>
+            </span>
+        </a>
+
+        <!-- Desktop navigation -->
+        <div class="hidden items-center gap-8 lg:flex">
+
+            <a href="#features"
+                class="flex items-center gap-1.5 text-xl font-medium text-muted-foreground transition-colors hover:text-primary">
+                Fonctionnalités
+                <ng-icon name="lucideChevronDown" class="size-4 opacity-60" />
+            </a>
+
+            <a href="#solutions"
+                class="flex items-center gap-1.5 text-xl font-medium text-muted-foreground transition-colors hover:text-primary">
+                Solutions
+                <ng-icon name="lucideChevronDown" class="size-4 opacity-60" />
+            </a>
+
+            <a href="#pricing" class="text-xl font-medium text-muted-foreground transition-colors hover:text-primary">
+                Tarifs
+            </a>
+
+            <a href="#about" class="text-xl font-medium text-muted-foreground transition-colors hover:text-primary">
+                À propos
+            </a>
+
+            <a href="#resources"
+                class="flex items-center gap-1.5 text-xl font-medium text-muted-foreground transition-colors hover:text-primary">
+                Ressources
+                <ng-icon name="lucideChevronDown" class="size-4 opacity-60" />
+            </a>
+
+        </div>
+
+        <!-- Desktop actions -->
+        <div class="hidden items-center gap-3 lg:flex">
+
+            <a hlmBtn   size="lg" href="/login"
+                class="inline-flex h-11 items-center justify-center rounded-lg border border-border bg-background px-5 text-sm font-semibold text-foreground transition-colors hover:bg-accent hover:text-accent-foreground">
+                Connexion
+            </a>
+
+            <a href="/register"
+                class="inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-primary px-5 text-sm font-semibold text-primary-foreground shadow-sm transition-opacity hover:opacity-90">
+                Créer un compte
+                <ng-icon name="lucideArrowRight" class="size-4" />
+            </a>
+
+        </div>
+
+        <!-- Mobile button -->
+        <button type="button"
+            class="flex size-10 items-center justify-center rounded-lg text-foreground transition-colors hover:bg-accent lg:hidden"
+            (click)="menuOpen.set(!menuOpen())" [attr.aria-expanded]="menuOpen()" aria-label="Ouvrir le menu">
+
+            @if (menuOpen()) {
+            <ng-icon name="lucideX" class="size-6" />
+            } @else {
+            <ng-icon name="lucideMenu" class="size-6" />
+            }
+
+        </button>
+
+    </nav>
+
+    <!-- Mobile navigation -->
+    @if (menuOpen()) {
+    <div class="border-t border-border bg-background px-6 py-5 lg:hidden">
+
+        <div class="mx-auto flex max-w-7xl flex-col gap-1">
+
+            <a href="#features" (click)="menuOpen.set(false)"
+                class="rounded-lg px-3 py-3 text-sm font-medium text-foreground transition-colors hover:bg-accent">
+                Fonctionnalités
+            </a>
+
+            <a href="#solutions" (click)="menuOpen.set(false)"
+                class="rounded-lg px-3 py-3 text-sm font-medium text-foreground transition-colors hover:bg-accent">
+                Solutions
+            </a>
+
+            <a href="#pricing" (click)="menuOpen.set(false)"
+                class="rounded-lg px-3 py-3 text-sm font-medium text-foreground transition-colors hover:bg-accent">
+                Tarifs
+            </a>
+
+            <a href="#about" (click)="menuOpen.set(false)"
+                class="rounded-lg px-3 py-3 text-sm font-medium text-foreground transition-colors hover:bg-accent">
+                À propos
+            </a>
+
+            <a href="#resources" (click)="menuOpen.set(false)"
+                class="rounded-lg px-3 py-3 text-sm font-medium text-foreground transition-colors hover:bg-accent">
+                Ressources
+            </a>
+
+            <div class="my-3 border-t border-border"></div>
+
+            <a href="/login"
+                class="flex h-11 items-center justify-center rounded-lg border border-border text-sm font-semibold text-foreground transition-colors hover:bg-accent">
+                Connexion
+            </a>
+
+            <a href="/register"
+                class="mt-2 flex h-11 items-center justify-center gap-2 rounded-lg bg-primary text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90">
+                Créer un compte
+                <ng-icon name="lucideArrowRight" class="size-4" />
+            </a>
+
+        </div>
+    </div>
+    }
+
+</header>
