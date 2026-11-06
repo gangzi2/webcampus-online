@@ -14,29 +14,33 @@
 
         <!-- Desktop navigation -->
         <div class="hidden items-center gap-8 lg:flex">
+            <a href="#accueil"
+                [class]="'flex items-center gap-1.5 text-xl font-medium transition-colors hover:text-primary border-b-2 pb-1 ' + (isActive('accueil') ? 'text-foreground border-primary' : 'text-muted-foreground border-transparent')">
+                Accueil
+            </a>
 
             <a href="#features"
-                class="flex items-center gap-1.5 text-xl font-medium text-muted-foreground transition-colors hover:text-primary">
+                [class]="'flex items-center gap-1.5 text-xl font-medium transition-colors hover:text-primary border-b-2 pb-1 ' + (isActive('features') ? 'text-foreground border-primary' : 'text-muted-foreground border-transparent')">
                 Fonctionnalités
                 <ng-icon name="lucideChevronDown" class="size-4 opacity-60" />
             </a>
 
             <a href="#solutions"
-                class="flex items-center gap-1.5 text-xl font-medium text-muted-foreground transition-colors hover:text-primary">
+                [class]="'flex items-center gap-1.5 text-xl font-medium transition-colors hover:text-primary border-b-2 pb-1 ' + (isActive('solutions') ? 'text-foreground border-primary' : 'text-muted-foreground border-transparent')">
                 Solutions
                 <ng-icon name="lucideChevronDown" class="size-4 opacity-60" />
             </a>
 
-            <a href="#pricing" class="text-xl font-medium text-muted-foreground transition-colors hover:text-primary">
+            <a href="#pricing" [class]="'text-xl font-medium transition-colors hover:text-primary border-b-2 pb-1 ' + (isActive('pricing') ? 'text-foreground border-primary' : 'text-muted-foreground border-transparent')">
                 Tarifs
             </a>
 
-            <a href="#about" class="text-xl font-medium text-muted-foreground transition-colors hover:text-primary">
+            <a href="#about" [class]="'text-xl font-medium transition-colors hover:text-primary border-b-2 pb-1 ' + (isActive('about') ? 'text-foreground border-primary' : 'text-muted-foreground border-transparent')">
                 À propos
             </a>
 
             <a href="#resources"
-                class="flex items-center gap-1.5 text-xl font-medium text-muted-foreground transition-colors hover:text-primary">
+                [class]="'flex items-center gap-1.5 text-xl font-medium transition-colors hover:text-primary border-b-2 pb-1 ' + (isActive('resources') ? 'text-foreground border-primary' : 'text-muted-foreground border-transparent')">
                 Ressources
                 <ng-icon name="lucideChevronDown" class="size-4 opacity-60" />
             </a>
@@ -81,27 +85,27 @@
         <div class="mx-auto flex max-w-7xl flex-col gap-1">
 
             <a href="#features" (click)="menuOpen.set(false)"
-                class="rounded-lg px-3 py-3 text-sm font-medium text-foreground transition-colors hover:bg-accent">
+                [class]="'rounded-lg px-3 py-3 text-sm font-medium transition-colors hover:bg-accent border-l-4 ' + (isActive('features') ? 'text-foreground bg-accent border-primary' : 'text-muted-foreground border-transparent')">
                 Fonctionnalités
             </a>
 
             <a href="#solutions" (click)="menuOpen.set(false)"
-                class="rounded-lg px-3 py-3 text-sm font-medium text-foreground transition-colors hover:bg-accent">
+                [class]="'rounded-lg px-3 py-3 text-sm font-medium transition-colors hover:bg-accent border-l-4 ' + (isActive('solutions') ? 'text-foreground bg-accent border-primary' : 'text-muted-foreground border-transparent')">
                 Solutions
             </a>
 
             <a href="#pricing" (click)="menuOpen.set(false)"
-                class="rounded-lg px-3 py-3 text-sm font-medium text-foreground transition-colors hover:bg-accent">
+                [class]="'rounded-lg px-3 py-3 text-sm font-medium transition-colors hover:bg-accent border-l-4 ' + (isActive('pricing') ? 'text-foreground bg-accent border-primary' : 'text-muted-foreground border-transparent')">
                 Tarifs
             </a>
 
             <a href="#about" (click)="menuOpen.set(false)"
-                class="rounded-lg px-3 py-3 text-sm font-medium text-foreground transition-colors hover:bg-accent">
+                [class]="'rounded-lg px-3 py-3 text-sm font-medium transition-colors hover:bg-accent border-l-4 ' + (isActive('about') ? 'text-foreground bg-accent border-primary' : 'text-muted-foreground border-transparent')">
                 À propos
             </a>
 
             <a href="#resources" (click)="menuOpen.set(false)"
-                class="rounded-lg px-3 py-3 text-sm font-medium text-foreground transition-colors hover:bg-accent">
+                [class]="'rounded-lg px-3 py-3 text-sm font-medium transition-colors hover:bg-accent border-l-4 ' + (isActive('resources') ? 'text-foreground bg-accent border-primary' : 'text-muted-foreground border-transparent')">
                 Ressources
             </a>
 
