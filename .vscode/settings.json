@@ -1,7 +1,11 @@
 {
   "files.exclude": {
+    "**/.angular": true,
+    "**/.vs": true,
     "**/bin": true,
+    "**/dist": true,
+    "**/node_modules": true,
     "**/obj": true,
-    "**/.vs": true
+    "**/tmp": true
   }
 }

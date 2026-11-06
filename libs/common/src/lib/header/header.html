@@ -1,0 +1,39 @@
+<header class="border-b sticky top-0 z-50 bg-background/80 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+
+        <!-- Logo -->
+        <a routerLink="/" class="flex items-center gap-2 font-bold text-xl tracking-tight">
+            <span
+                class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-primary-foreground text-sm font-extrabold">
+                W
+            </span>
+            <span>Web<span class="text-primary">Campus</span></span>
+        </a>
+
+        <!-- Navigation principale -->
+        <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+            <a routerLink="/" routerLinkActive="text-primary" [routerLinkActiveOptions]="{exact: true}"
+                class="hover:text-primary transition">
+                Accueil
+            </a>
+            <a routerLink="/services" routerLinkActive="text-primary" class="hover:text-primary transition">
+                Solutions & API
+            </a>
+            <a routerLink="/vr-lms" routerLinkActive="text-primary" class="hover:text-primary transition">
+                VR & Moodle
+            </a>
+            <a routerLink="/about" routerLinkActive="text-primary" class="hover:text-primary transition">
+                À propos
+            </a>
+        </nav>
+
+        <!-- CTA & Contact -->
+        <div class="flex items-center gap-4">
+            <a routerLink="/contact"
+                class="bg-primary text-primary-foreground hover:opacity-90 px-4 py-2 rounded-md text-sm font-medium transition shadow-sm">
+                Contact & Démo
+            </a>
+        </div>
+
+    </div>
+</header>
