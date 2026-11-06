@@ -3,8 +3,8 @@
 
         <!-- Logo -->
         <a href="/" class="flex shrink-0 items-center gap-3">
-            <div class="flex size-10 items-center justify-center rounded-xl bg-primary text-primary-foreground">
-                <ng-icon name="lucideGraduationCap" class="size-6" />
+            <div class="flex size-12 items-center justify-center rounded-xl bg-primary text-primary-foreground">
+                <ng-icon name="lucideGraduationCap" size="32" />
             </div>
 
             <span class="text-3xl font-extrabold tracking-tight text-foreground">
@@ -15,32 +15,32 @@
         <!-- Desktop navigation -->
         <div class="hidden items-center gap-8 lg:flex">
             <a href="#accueil"
-                [class]="'flex items-center gap-1.5 text-xl font-medium transition-colors hover:text-primary border-b-2 pb-1 ' + (isActive('accueil') ? 'text-foreground border-primary' : 'text-muted-foreground border-transparent')">
+                [class]="'flex items-center gap-1.5 text-xl font-medium transition-colors hover:text-primary border-b-4 pb-3 ' + (isActive('accueil') ? 'text-foreground border-primary ' : 'text-muted-foreground border-transparent')">
                 Accueil
             </a>
 
             <a href="#features"
-                [class]="'flex items-center gap-1.5 text-xl font-medium transition-colors hover:text-primary border-b-2 pb-1 ' + (isActive('features') ? 'text-foreground border-primary' : 'text-muted-foreground border-transparent')">
+                [class]="'flex items-center gap-1.5 text-xl font-medium transition-colors hover:text-primary border-b-4 pb-3 ' + (isActive('features') ? 'text-foreground border-primary ' : 'text-muted-foreground border-transparent')">
                 Fonctionnalités
                 <ng-icon name="lucideChevronDown" class="size-4 opacity-60" />
             </a>
 
             <a href="#solutions"
-                [class]="'flex items-center gap-1.5 text-xl font-medium transition-colors hover:text-primary border-b-2 pb-1 ' + (isActive('solutions') ? 'text-foreground border-primary' : 'text-muted-foreground border-transparent')">
+                [class]="'flex items-center gap-1.5 text-xl font-medium transition-colors hover:text-primary border-b-4 pb-3  ' + (isActive('solutions') ? 'text-foreground border-primary ' : 'text-muted-foreground border-transparent')">
                 Solutions
                 <ng-icon name="lucideChevronDown" class="size-4 opacity-60" />
             </a>
 
-            <a href="#pricing" [class]="'text-xl font-medium transition-colors hover:text-primary border-b-2 pb-1 ' + (isActive('pricing') ? 'text-foreground border-primary' : 'text-muted-foreground border-transparent')">
+            <a href="#pricing" [class]="'text-xl font-medium transition-colors hover:text-primary border-b-4 pb-3 ' + (isActive('pricing') ? 'text-foreground border-primary ' : 'text-muted-foreground border-transparent')">
                 Tarifs
             </a>
 
-            <a href="#about" [class]="'text-xl font-medium transition-colors hover:text-primary border-b-2 pb-1 ' + (isActive('about') ? 'text-foreground border-primary' : 'text-muted-foreground border-transparent')">
+            <a href="#about" [class]="'text-xl font-medium transition-colors hover:text-primary border-b-4 pb-3 ' + (isActive('about') ? 'text-foreground border-primary ' : 'text-muted-foreground border-transparent')">
                 À propos
             </a>
 
             <a href="#resources"
-                [class]="'flex items-center gap-1.5 text-xl font-medium transition-colors hover:text-primary border-b-2 pb-1 ' + (isActive('resources') ? 'text-foreground border-primary' : 'text-muted-foreground border-transparent')">
+                [class]="'flex items-center gap-1.5 text-xl font-medium transition-colors hover:text-primary border-b-4 pb-3 ' + (isActive('resources') ? 'text-foreground border-primary' : 'text-muted-foreground border-transparent')">
                 Ressources
                 <ng-icon name="lucideChevronDown" class="size-4 opacity-60" />
             </a>
