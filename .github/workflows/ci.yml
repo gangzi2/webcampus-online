@@ -2,9 +2,9 @@ name: WebCampus CI - Build & Test
 
 on:
   push:
-    branches: [main, master]
+    branches: [develop]
   pull_request:
-    branches: [main, master]
+    branches: [develop]
 
 jobs:
   build:

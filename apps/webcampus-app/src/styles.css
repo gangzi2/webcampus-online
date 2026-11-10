@@ -63,7 +63,7 @@
 /* 2. Blocs structurants et conteneurs globaux */
 @layer components {
   .webcampus-page {
-    @apply max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 flex-1;
+    @apply w-full sm:px-6 lg:px-8 py-8 flex-1;
   }
 }
 

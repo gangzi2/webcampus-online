@@ -1,0 +1,135 @@
+ 
+<section class="relative overflow-hidden flex flex-col lg:flex-row items-center
+                gap-12 lg:gap-16 bg-background px-6 lg:px-12 pb-10">
+    <div
+        class="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none">
+    </div>
+    <!-- Colonne gauche -->
+    <div class="w-full lg:w-1/2 flex-none">
+
+        <p class="mb-6 text-sm font-semibold uppercase tracking-[0.18em] text-primary">
+            Agence digitale · Grenoble
+        </p>
+
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold
+                   tracking-tight leading-[1.12] text-foreground">
+            Donnez une nouvelle dimension à vos
+            <span class="text-primary">formations.</span>
+        </h1>
+
+        <p class="mt-7 max-w-xl text-lg leading-relaxed text-muted-foreground">
+            Nous concevons des expériences de formation immersives,
+            des plateformes e-learning et des applications web
+            sur mesure pour transformer vos parcours d'apprentissage.
+        </p>
+
+        <div class="mt-9 flex flex-wrap items-center gap-4">
+            <a href="#contact" class="rounded-lg bg-primary px-7 py-3.5 font-semibold text-primary-foreground
+                      transition hover:opacity-90">
+                Parlons de votre projet
+            </a>
+
+            <a href="#expertises" class="rounded-lg border border-border px-7 py-3.5 font-semibold
+                      text-foreground transition hover:bg-muted">
+                Découvrir nos expertises
+            </a>
+        </div>
+
+        <div class="mt-12 flex flex-wrap gap-x-8 gap-y-4 text-sm text-muted-foreground">
+
+            <span class="flex items-center gap-2">
+                <ng-icon name="lucideGraduationCap" class="text-primary" size="20" />
+                Expertise Moodle
+            </span>
+
+            <span class="flex items-center gap-2">
+                <ng-icon name="lucideGlasses" class="text-primary" size="20" />
+                Réalité virtuelle 3D
+            </span>
+
+            <span class="flex items-center gap-2">
+                <ng-icon name="lucideCode2" class="text-primary" size="20" />
+                Développement sur mesure
+            </span>
+
+        </div>
+
+    </div>
+
+    <!-- Colonne droite -->
+    <div class="w-full lg:w-1/2 min-w-0">
+        <div class="relative overflow-hidden rounded-2xl border border-border">
+              <app-vr-scene [projectName]="'Ams'"></app-vr-scene>
+        </div>
+    </div>
+
+</section>
+
+
+<section id="expertises" class="relative overflow-hidden flex flex-col lg:flex-row items-center
+                gap-12 lg:gap-16  px-6 lg:px-12 bg-foreground">
+ 
+    <div class="mx-auto ">
+
+        <div class=" mb-14">
+            <p class="text-sm font-semibold uppercase tracking-widest text-primary">
+                Nos expertises
+            </p>
+
+            <h2 class="mt-4 text-3xl lg:text-4xl font-bold text-background ">
+                Des solutions digitales au service de la formation
+            </h2>
+
+            <p class="mt-5 text-lg text-background">
+                Nous accompagnons les entreprises et organismes de formation
+                dans la conception et le développement de leurs solutions digitales.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <!-- Moodle -->
+            <article class="rounded-2xl border border-border p-8">
+                <ng-icon name="lucideGraduationCap" class="text-primary text-3xl" />
+
+                <h3 class="mt-6 text-xl font-semibold text-background">
+                    Plateformes Moodle
+                </h3>
+
+                <p class="mt-3 leading-relaxed text-background">
+                    Création, personnalisation et évolution de plateformes
+                    LMS adaptées à vos besoins pédagogiques.
+                </p>
+            </article>
+
+            <!-- VR -->
+            <article class="rounded-2xl border border-border p-8">
+                <ng-icon name="lucide-glasses" class="text-primary text-3xl" />
+
+                <h3 class="mt-6 text-xl font-semibold text-background">
+                    Réalité virtuelle 3D
+                </h3>
+
+                <p class="mt-3 leading-relaxed text-background">
+                    Création d'environnements immersifs et de simulations
+                    interactives pour apprendre autrement.
+                </p>
+            </article>
+
+            <!-- Développement -->
+            <article class="rounded-2xl border border-border p-8">
+                <ng-icon name="lucideCode2" class="text-primary text-3xl" />
+
+                <h3 class="mt-6 text-xl font-semibold text-background">
+                    Développement web
+                </h3>
+
+                <p class="mt-3 leading-relaxed text-background">
+                    Développement d'applications web, plateformes SaaS
+                    et solutions métiers sur mesure.
+                </p>
+            </article>
+
+        </div>
+    </div>
+</section>

@@ -63,15 +63,15 @@
 
         </div>
 
-        <!-- Mobile button -->
+        <!-- Mobile button flex size-12 items-center justify-center rounded-xl bg-primary text-primary-foreground-->
         <button type="button"
-            class="flex size-10 items-center justify-center rounded-lg text-foreground transition-colors hover:bg-accent lg:hidden"
+            class="flex size-12 items-center justify-center rounded-lg text-foreground transition-colors hover:bg-accent lg:hidden"
             (click)="menuOpen.set(!menuOpen())" [attr.aria-expanded]="menuOpen()" aria-label="Ouvrir le menu">
 
             @if (menuOpen()) {
-            <ng-icon name="lucideX" class="size-6" />
+            <ng-icon name="lucideX" class="size-12" />
             } @else {
-            <ng-icon name="lucideMenu" class="size-6" />
+            <ng-icon name="lucideMenu" class="size-12" />
             }
 
         </button>
