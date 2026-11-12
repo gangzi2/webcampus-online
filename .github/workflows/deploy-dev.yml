@@ -1,104 +1,16 @@
-name: WebCampus DEV - Build & Deploy
+- name: Configure SSH
+  if: github.event_name == 'push' && github.ref == 'refs/heads/develop'
+  env:
+    SSH_PRIVATE_KEY_B64: ${{ secrets.DEV_SERVER_SSH_KEY_B64 }}
+    SSH_KNOWN_HOSTS: ${{ secrets.DEV_SERVER_KNOWN_HOSTS }}
+  run: |
+    mkdir -p ~/.ssh
+    chmod 700 ~/.ssh
 
-on:
-  push:
-    branches:
-      - develop
-  pull_request:
-    branches:
-      - develop
+    printf '%s' "$SSH_PRIVATE_KEY_B64" | base64 --decode > ~/.ssh/id_ed25519
+    chmod 600 ~/.ssh/id_ed25519
 
-permissions:
-  contents: read
+    printf '%s\n' "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
+    chmod 600 ~/.ssh/known_hosts
 
-jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-
-    steps:
-      # 1. Récupération du code
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      # 2. Node.js
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-          cache: npm
-
-      - name: Install dependencies
-        run: npm install
-
-      # 3. Build Angular
-      - name: Build Angular
-        run: npx nx build webcampus-app
-
-      # 4. .NET 10
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: '10.0.x'
-
-      - name: Restore .NET
-        run: dotnet restore apps/backend_api/backend_api.csproj
-
-      - name: Publish API
-        run: >
-          dotnet publish apps/backend_api/backend_api.csproj
-          --configuration Release
-          --no-restore
-          --output ./publish/backend_api
-
-      # 5. Configuration SSH (uniquement sur push develop)
-      - name: Configure SSH
-        if: github.event_name == 'push' && github.ref == 'refs/heads/develop'
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.DEV_SERVER_SSH_KEY }}
-          SSH_KNOWN_HOSTS: ${{ secrets.DEV_SERVER_KNOWN_HOSTS }}
-        run: |
-          mkdir -p ~/.ssh
-          chmod 700 ~/.ssh
-
-          printf '%s\n' "$SSH_PRIVATE_KEY" > ~/.ssh/id_ed25519
-          chmod 600 ~/.ssh/id_ed25519
-
-          printf '%s\n' "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
-          chmod 600 ~/.ssh/known_hosts
-
-      # 6. Déploiement Angular
-      - name: Deploy Angular
-        if: github.event_name == 'push' && github.ref == 'refs/heads/develop'
-        env:
-          HOST: ${{ secrets.DEV_SERVER_HOST }}
-          PORT: ${{ secrets.DEV_SERVER_PORT }}
-          USER: ${{ secrets.DEV_SERVER_USER }}
-        run: |
-          rsync -az --delete \
-            -e "ssh -p $PORT" \
-            dist/apps/webcampus-app/browser/ \
-            "$USER@$HOST:/opt/webcampus/dev/frontend/"
-
-      # 7. Déploiement API .NET
-      - name: Deploy API
-        if: github.event_name == 'push' && github.ref == 'refs/heads/develop'
-        env:
-          HOST: ${{ secrets.DEV_SERVER_HOST }}
-          PORT: ${{ secrets.DEV_SERVER_PORT }}
-          USER: ${{ secrets.DEV_SERVER_USER }}
-        run: |
-          rsync -az --delete \
-            -e "ssh -p $PORT" \
-            publish/backend_api/ \
-            "$USER@$HOST:/opt/webcampus/dev/api/"
-
-      # 8. Redémarrage API
-      - name: Restart API
-        if: github.event_name == 'push' && github.ref == 'refs/heads/develop'
-        env:
-          HOST: ${{ secrets.DEV_SERVER_HOST }}
-          PORT: ${{ secrets.DEV_SERVER_PORT }}
-          USER: ${{ secrets.DEV_SERVER_USER }}
-        run: |
-          ssh -p "$PORT" "$USER@$HOST" \
-            "sudo -n /usr/bin/systemctl restart webcampus-dev-api"
+    ssh-keygen -y -f ~/.ssh/id_ed25519 > /dev/null
