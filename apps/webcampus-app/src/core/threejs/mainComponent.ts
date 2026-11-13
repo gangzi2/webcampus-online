@@ -229,6 +229,7 @@ export class VrSceneComponent implements AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
     this.disposeScene();
     cancelAnimationFrame(this.animationFrameId);
     const renderer = this.globalService.renderer();

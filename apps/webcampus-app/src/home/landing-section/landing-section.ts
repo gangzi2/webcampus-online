@@ -1,18 +1,58 @@
-import { Component } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import {
+  lucideBoxes,
   lucideCode2,
   lucideGlasses,
   lucideGraduationCap,
+  lucideLinkedin,
+  lucideMail,
+  lucideShieldCheck,
+  lucideWrench,
+  lucideYoutube,
 } from '@ng-icons/lucide';
+import type { ContactMail } from '../../models/Contact';
+
+import { WebcampusCard } from '@webcampus2/common';
+import { DialogService } from '../../core/dialog/dialog-service';
 import { VrSceneComponent } from '../../core/threejs/mainComponent';
 @Component({
   selector: 'app-landing-section',
-  imports: [VrSceneComponent, NgIcon],
+  imports: [VrSceneComponent, NgIcon, WebcampusCard],
   providers: [
-    provideIcons({ lucideGraduationCap, lucideGlasses, lucideCode2 }),
+    provideIcons({
+      lucideGraduationCap,
+      lucideGlasses,
+      lucideCode2,
+      lucideWrench,
+      lucideBoxes,
+      lucideShieldCheck,
+      lucideLinkedin,
+      lucideYoutube,
+      lucideMail,
+    }),
   ],
   templateUrl: './landing-section.html',
   styleUrl: './landing-section.scss',
 })
-export class LandingSection {}
+export class LandingSection {
+  protected readonly error = signal<string | null>(null);
+  dialogService = inject(DialogService);
+
+  protected async openContactForm(): Promise<void> {
+    this.error.set(null);
+    await this.dialogService.openLazy(
+      () =>
+        import('../contact-form/contact-form.component').then(
+          (m) => m.ContactFormComponent,
+        ),
+      signal({
+        onSubmit: async (payload: ContactMail) => this.sendmail(payload),
+      }),
+    );
+  }
+
+  sendmail(payload: ContactMail): void {
+    console.log(payload);
+  }
+}

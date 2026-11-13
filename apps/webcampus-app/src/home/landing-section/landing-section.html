@@ -11,18 +11,15 @@
             Agence digitale · Grenoble
         </p>
 
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold
-                   tracking-tight leading-[1.12] text-foreground">
+        <h1 class="tracking-tight leading-[1.12] text-foreground">
             Donnez une nouvelle dimension à vos
             <span class="text-primary">formations.</span>
         </h1>
-
         <p class="mt-7 max-w-xl text-lg leading-relaxed text-muted-foreground">
             Nous concevons des expériences de formation immersives,
             des plateformes e-learning et des applications web
             sur mesure pour transformer vos parcours d'apprentissage.
         </p>
-
         <div class="mt-9 flex flex-wrap items-center gap-4">
             <a href="#contact" class="rounded-lg bg-primary px-7 py-3.5 font-semibold text-primary-foreground
                       transition hover:opacity-90">
@@ -34,7 +31,6 @@
                 Découvrir nos expertises
             </a>
         </div>
-
         <div class="mt-12 flex flex-wrap gap-x-8 gap-y-4 text-sm text-muted-foreground">
 
             <span class="flex items-center gap-2">
@@ -66,13 +62,11 @@
 </section>
 
 
-<section id="expertises" class="relative overflow-hidden flex flex-col lg:flex-row items-center
-                gap-12 lg:gap-16  px-6 lg:px-12 bg-foreground">
- 
-    <div class="mx-auto ">
-
-        <div class=" mb-14">
-            <p class="text-sm font-semibold uppercase tracking-widest text-primary">
+<section id="expertises" class="relative border-t overflow-hidden flex flex-col lg:flex-row items-center
+                gap-12 lg:gap-16  px-6 lg:px-12 bg-foreground pb-8">
+    <div class="mx-auto mb-6 mt-6">
+        <div class="mb-14">
+            <p class="text-sm font-bold uppercase tracking-widest text-primary">
                 Nos expertises
             </p>
 
@@ -86,50 +80,542 @@
             </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
+             <!-- VR -->
+            <lib-webcampus-card title="Plateformes LMS / Moodle"
+                description=" Création, personnalisation et évolution de plateformes LMS adaptées à vos besoins pédagogiques."
+                imageUrl="/images/moodle.jpeg"
+                 badgeText="E-Learning" 
+                iconName="lucideGraduationCap" />
+ 
+            <lib-webcampus-card title="Réalité virtuelle 3D" 
+                description="Création d'environnements immersifs et de simulations interactives pour apprendre autrement."
+                imageUrl="/images/vr.avif"
+                badgeText="WebGL / VR" 
+                bgColor="bg-slate-50/80"
+                iconName="lucide-glasses" />
+ 
+            <lib-webcampus-card title="Développement web"
+                description="Développement d'applications web, plateformes SaaS et solutions métiers sur mesure."
+                imageUrl="/images/dev.avif"
+                badgeText="Fullstack"
+                iconName="lucideCode2" />
+        </div>
+    </div>
+</section>
 
-            <!-- Moodle -->
-            <article class="rounded-2xl border border-border p-8">
-                <ng-icon name="lucideGraduationCap" class="text-primary text-3xl" />
+ 
+<section id="expertises" class="relative overflow-hidden py-16 px-6 lg:px-12 bg-secondary">
 
-                <h3 class="mt-6 text-xl font-semibold text-background">
-                    Plateformes Moodle
-                </h3>
+    <!-- Grille principale alignée en haut (items-start) -->
+    <div class="mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
 
-                <p class="mt-3 leading-relaxed text-background">
-                    Création, personnalisation et évolution de plateformes
-                    LMS adaptées à vos besoins pédagogiques.
+        <!-- COLONNE GAUCHE : Textes (Alignés en haut) -->
+        <div class="lg:col-span-4 flex flex-col justify-start">
+            <p class="text-sm font-bold uppercase tracking-widest text-primary">
+                UN CATALOGUE DE FORMATIONS IMMERSIVES
+            </p>
+
+            <h2 class="mt-4 text-3xl lg:text-4xl font-bold text-background">
+                Nos formations VR
+            </h2>
+
+            <p class="mt-5 text-base text-background/90 leading-relaxed">
+                Des expériences 3D interactives et réalistes pour développer les compétences de vos équipes, dans des
+                environnements immersifs et sécurisés.
+            </p>
+           <div class="mt-9 flex flex-wrap items-center gap-4"> 
+                <a href="#contact" class="rounded-lg bg-primary px-7 py-3.5 font-semibold text-primary-foreground
+                                        transition hover:opacity-90">
+                   Voir nos formations
+                </a>
+           </div>
+        </div>
+
+        <!-- COLONNE DROITE : 4 Cartes sur une seule ligne -->
+        <div class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 items-stretch">
+
+            <!-- 1. Maintenance industrielle -->
+            <lib-webcampus-card title="Maintenance"
+                description="Procédures techniques et gestes métiers en milieu industriel." iconName="lucideWrench"
+                imageUrl="/images/maitenance.jpeg" bgColor="bg-slate-50/90" linkText="Découvrir" />
+
+            <!-- 2. Simulation 3D -->
+            <lib-webcampus-card title="Simulation 3D"
+                description="Exploration d'environnements 3D interactifs pour la formation." iconName="lucideBoxes"
+                imageUrl="/images/simulation.jpeg" bgColor="bg-slate-50/90" linkText="Découvrir" />
+
+            <!-- 3. Sécurité et prévention -->
+            <lib-webcampus-card title="Sécurité"
+                description="Mises en situation réalistes pour réduire les risques professionnels."
+                iconName="lucideShieldCheck" imageUrl="/images/security.jpeg" bgColor="bg-stone-50"
+                linkText="Découvrir" />
+
+            <!-- 4. Formations immersives -->
+            <lib-webcampus-card title="Immersif"
+                description="Expériences en réalité virtuelle pour le développement des compétences."
+                iconName="lucideGlasses" imageUrl="/images/immersive.jpeg" bgColor="bg-stone-50" linkText="Découvrir" />
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<section class="relative overflow-hidden py-20 px-6 lg:px-12 bg-slate-50 border-t border-slate-200/60">
+    <div class="mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+
+        <!-- ================= COLONNE GAUCHE : Texte & Avantages (5 colonnes) ================= -->
+        <div class="lg:col-span-5 flex flex-col justify-start space-y-6">
+            <div>
+                <p class="text-xs lg:text-sm font-bold uppercase tracking-widest text-primary">
+                    UNE INTÉGRATION NATIVE AVEC MOODLE
                 </p>
-            </article>
-
-            <!-- VR -->
-            <article class="rounded-2xl border border-border p-8">
-                <ng-icon name="lucide-glasses" class="text-primary text-3xl" />
-
-                <h3 class="mt-6 text-xl font-semibold text-background">
-                    Réalité virtuelle 3D
-                </h3>
-
-                <p class="mt-3 leading-relaxed text-background">
-                    Création d'environnements immersifs et de simulations
-                    interactives pour apprendre autrement.
+                <h2 class="mt-3 text-3xl lg:text-4xl font-extrabold tracking-tight text-slate-900">
+                    Moodle + WebCampus = <br class="hidden sm:inline" />une expérience complète
+                </h2>
+                <p class="mt-4 text-base text-slate-600 leading-relaxed">
+                    WebCampus s'intègre nativement à Moodle pour simplifier la gestion de vos formations et offrir un
+                    parcours fluide à vos apprenants, du LMS jusqu'à l'expérience VR.
                 </p>
-            </article>
+            </div>
 
-            <!-- Développement -->
-            <article class="rounded-2xl border border-border p-8">
-                <ng-icon name="lucideCode2" class="text-primary text-3xl" />
+            <!-- Liste des points clés avec coche -->
+            <ul class="space-y-3 pt-2">
+                <li class="flex items-center gap-3 text-slate-700 font-medium text-sm">
+                    <div
+                        class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-white shadow-sm">
+                        <ng-icon name="lucideCheck" class="text-xs stroke-[3]" />
+                    </div>
+                    Synchronisation des utilisateurs et des cours
+                </li>
+                <li class="flex items-center gap-3 text-slate-700 font-medium text-sm">
+                    <div
+                        class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-white shadow-sm">
+                        <ng-icon name="lucideCheck" class="text-xs stroke-[3]" />
+                    </div>
+                    Lancement des formations VR depuis Moodle
+                </li>
+                <li class="flex items-center gap-3 text-slate-700 font-medium text-sm">
+                    <div
+                        class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-white shadow-sm">
+                        <ng-icon name="lucideCheck" class="text-xs stroke-[3]" />
+                    </div>
+                    Suivi des résultats et des compétences
+                </li>
+                <li class="flex items-center gap-3 text-slate-700 font-medium text-sm">
+                    <div
+                        class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-white shadow-sm">
+                        <ng-icon name="lucideCheck" class="text-xs stroke-[3]" />
+                    </div>
+                    Gestion des licences et des groupes
+                </li>
+            </ul>
 
-                <h3 class="mt-6 text-xl font-semibold text-background">
-                    Développement web
-                </h3>
+            <!-- Bouton d'action -->
+            <div class="pt-4">
+                <a href="#contact"
+                    class="inline-flex items-center justify-center rounded-xl border-2 border-primary px-6 py-3 text-sm font-semibold text-primary transition-all duration-300 hover:bg-primary hover:text-white shadow-sm group">
+                    En savoir plus sur l'intégration Moodle
+                    <span class="ml-2 transition-transform duration-300 group-hover:translate-x-1">→</span>
+                </a>
+            </div>
+        </div>
 
-                <p class="mt-3 leading-relaxed text-background">
-                    Développement d'applications web, plateformes SaaS
-                    et solutions métiers sur mesure.
+        <!-- ================= COLONNE DROITE : Schéma d'Architecture & Interfaces (7 colonnes) ================= -->
+        <div class="lg:col-span-7 flex flex-col md:flex-row items-center justify-center gap-6 relative">
+
+            <!-- Schéma central vertical (Moodle <-> WebCampus <-> Apprenant) -->
+            <div class="flex flex-col items-center w-full max-w-sm space-y-3 z-20">
+
+                <!-- 1. Bloc Moodle (Haut) -->
+                <div
+                    class="w-full rounded-2xl bg-white border border-slate-200/80 p-4 shadow-xl shadow-slate-900/5 text-center transition-transform duration-300 hover:scale-105">
+                    <div class="flex items-center justify-center gap-2 mb-1">
+                        <span class="text-xl font-black text-orange-500 tracking-tighter">moodle</span>
+                    </div>
+                    <p class="text-xs text-slate-500 font-medium">Cours, utilisateurs, inscriptions, suivi pédagogique
+                    </p>
+                </div>
+
+                <!-- Flèche de liaison 1 -->
+                <div class="text-primary font-bold text-lg animate-bounce py-1">
+                    ↕
+                </div>
+
+                <!-- 2. Bloc Central WebCampus (Noir / Sombre) -->
+                <div
+                    class="w-full rounded-2xl bg-slate-950 border border-slate-800 p-6 shadow-2xl shadow-black/30 text-white text-center relative overflow-hidden group">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-tr from-primary/10 via-transparent to-transparent pointer-events-none">
+                    </div>
+
+                    <div class="relative z-10 flex items-center justify-center gap-2 mb-2">
+                        <div
+                            class="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/20 border border-primary/40">
+                            <ng-icon name="lucideBoxes" class="text-lg text-primary" />
+                        </div>
+                        <span class="text-lg font-bold tracking-tight text-white">WebCampus</span>
+                    </div>
+                    <p class="relative z-10 text-xs text-slate-400 leading-relaxed">
+                        Gestion des licences, lancement des expériences VR, progression et résultats
+                    </p>
+                </div>
+
+                <!-- Flèche de liaison 2 -->
+                <div class="text-primary font-bold text-lg animate-bounce py-1">
+                    ↕
+                </div>
+
+                <!-- 3. Bloc Apprenant (Bas) -->
+                <div
+                    class="w-full rounded-2xl bg-white border border-slate-200/80 p-4 shadow-xl shadow-slate-900/5 flex items-center gap-3 transition-transform duration-300 hover:scale-105">
+                    <div
+                        class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-slate-100 border border-slate-200 overflow-hidden">
+                        <ng-icon name="lucideUser" class="text-xl text-slate-600" />
+                    </div>
+                    <div class="text-left">
+                        <h4 class="text-xs font-bold text-slate-900">Apprenant</h4>
+                        <p class="text-[11px] text-slate-500">Accès aux expériences depuis son parcours de formation</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Aperçu visuel des interfaces en arrière-plan (Mockup de fenêtres) -->
+            <div
+                class="hidden xl:flex flex-col gap-4 absolute -right-12 pointer-events-none opacity-40 scale-90 translate-y-6">
+                <!-- Mini mockup dashboard -->
+                <div class="w-72 rounded-xl bg-white border border-slate-200 shadow-2xl p-3">
+                    <div class="flex items-center gap-1.5 mb-2">
+                        <div class="w-2.5 h-2.5 rounded-full bg-red-400"></div>
+                        <div class="w-2.5 h-2.5 rounded-full bg-amber-400"></div>
+                        <div class="w-2.5 h-2.5 rounded-full bg-emerald-400"></div>
+                    </div>
+                    <div class="h-20 bg-slate-100 rounded-lg"></div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+
+<section class="relative overflow-hidden py-24 px-6 lg:px-12 bg-slate-950 text-white">
+    <!-- Effet lumineux subtil en arrière-plan -->
+    <div class="absolute inset-0 bg-gradient-to-tr from-primary/10 via-transparent to-transparent pointer-events-none">
+    </div>
+
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center relative z-10">
+
+        <!-- ================= COLONNE GAUCHE : Mockup du Dashboard WebCampus (7 colonnes) ================= -->
+        <div class="lg:col-span-7 flex justify-center">
+            <div
+                class="relative w-full rounded-2xl bg-slate-900 border border-slate-800 p-3 shadow-2xl shadow-black/60 overflow-hidden group transition-transform duration-500 hover:scale-[1.01]">
+
+                <!-- Barre de fenêtre (Mac/Windows style) -->
+                <div class="flex items-center justify-between px-2 pb-3 border-b border-slate-800/80 mb-3">
+                    <div class="flex items-center gap-1.5">
+                        <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
+                        <div class="w-3 h-3 rounded-full bg-amber-500/80"></div>
+                        <div class="w-3 h-3 rounded-full bg-emerald-500/80"></div>
+                    </div>
+                    <div class="flex items-center gap-2 text-xs text-slate-400 font-medium">
+                        <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                        WebCampus Admin Dashboard
+                    </div>
+                    <div class="w-12"></div>
+                </div>
+
+                <!-- Contenu simulé du Dashboard -->
+                <div class="bg-slate-950 rounded-xl p-4 border border-slate-800/50">
+
+                    <!-- Top bar Dashboard -->
+                    <div class="flex items-center justify-between pb-4 mb-4 border-b border-slate-800">
+                        <div class="flex items-center gap-2">
+                            <div
+                                class="h-6 w-6 rounded-lg bg-primary flex items-center justify-center font-bold text-white text-xs">
+                                W</div>
+                            <span class="font-bold text-sm tracking-tight text-white">WebCampus</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-xs text-slate-400">
+                            <span class="hidden sm:inline">Admin Demo</span>
+                            <div
+                                class="w-7 h-7 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-[10px] font-bold">
+                                AD</div>
+                        </div>
+                    </div>
+
+                    <!-- Grille de stats rapides -->
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
+                        <div class="bg-slate-900/90 border border-slate-800 rounded-lg p-3">
+                            <p class="text-[11px] text-slate-400 font-medium">Formations actives</p>
+                            <p class="text-xl font-extrabold text-white mt-1">12</p>
+                        </div>
+                        <div class="bg-slate-900/90 border border-slate-800 rounded-lg p-3">
+                            <p class="text-[11px] text-slate-400 font-medium">Apprenants</p>
+                            <p class="text-xl font-extrabold text-white mt-1">248</p>
+                        </div>
+                        <div class="bg-slate-900/90 border border-slate-800 rounded-lg p-3">
+                            <p class="text-[11px] text-slate-400 font-medium">Taux de complétion</p>
+                            <p class="text-xl font-extrabold text-white mt-1">87%</p>
+                        </div>
+                        <div class="bg-slate-900/90 border border-slate-800 rounded-lg p-3">
+                            <p class="text-[11px] text-slate-400 font-medium">Temps moyen</p>
+                            <p class="text-xl font-extrabold text-white mt-1">2h 15</p>
+                        </div>
+                    </div>
+
+                    <!-- Zone Graphique + Formations récentes -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                        <!-- Graphique simulé -->
+                        <div
+                            class="md:col-span-2 bg-slate-900/90 border border-slate-800 rounded-lg p-3 flex flex-col justify-between">
+                            <p class="text-xs font-semibold text-slate-300 mb-2">Progression des apprenants</p>
+                            <div class="h-28 w-full flex items-end gap-2 pt-2 border-b border-slate-800 pb-1">
+                                <div class="w-full bg-primary/20 hover:bg-primary/40 rounded-t h-[40%] transition-all">
+                                </div>
+                                <div class="w-full bg-primary/30 hover:bg-primary/50 rounded-t h-[60%] transition-all">
+                                </div>
+                                <div class="w-full bg-primary/40 hover:bg-primary/60 rounded-t h-[55%] transition-all">
+                                </div>
+                                <div class="w-full bg-primary/60 hover:bg-primary/80 rounded-t h-[75%] transition-all">
+                                </div>
+                                <div class="w-full bg-primary/80 hover:bg-primary rounded-t h-[90%] transition-all">
+                                </div>
+                                <div class="w-full bg-primary rounded-t h-[100%] transition-all"></div>
+                            </div>
+                        </div>
+
+                        <!-- Liste récente -->
+                        <div class="bg-slate-900/90 border border-slate-800 rounded-lg p-3">
+                            <p class="text-xs font-semibold text-slate-300 mb-2">Formations récentes</p>
+                            <div class="space-y-2">
+                                <div
+                                    class="flex items-center gap-2 p-1.5 rounded bg-slate-950/60 border border-slate-800/60">
+                                    <div
+                                        class="w-5 h-5 rounded bg-primary/20 flex items-center justify-center text-[10px] text-primary">
+                                        🔧</div>
+                                    <div class="overflow-hidden">
+                                        <p class="text-[11px] font-medium text-white truncate">Maintenance industrielle
+                                        </p>
+                                        <p class="text-[9px] text-slate-400">120 apprenants</p>
+                                    </div>
+                                </div>
+                                <div
+                                    class="flex items-center gap-2 p-1.5 rounded bg-slate-950/60 border border-slate-800/60">
+                                    <div
+                                        class="w-5 h-5 rounded bg-primary/20 flex items-center justify-center text-[10px] text-primary">
+                                        🛡️</div>
+                                    <div class="overflow-hidden">
+                                        <p class="text-[11px] font-medium text-white truncate">Sécurité en entreprise
+                                        </p>
+                                        <p class="text-[9px] text-slate-400">86 apprenants</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= COLONNE DROITE : Texte & 4 Blocs Fonctionnalités (5 colonnes) ================= -->
+        <div class="lg:col-span-5 flex flex-col justify-start space-y-6">
+            <div>
+                <p class="text-xs lg:text-sm font-bold uppercase tracking-widest text-primary">
+                    UN TABLEAU DE BORD PUISSANT
                 </p>
-            </article>
+                <h2 class="mt-3 text-3xl lg:text-4xl font-extrabold tracking-tight text-white">
+                    Pilotez votre plateforme en toute simplicité
+                </h2>
+                <p class="mt-4 text-base text-slate-300 leading-relaxed">
+                    Gérez vos formations, vos apprenants et vos licences depuis une interface intuitive et complète, et
+                    suivez vos résultats en temps réel.
+                </p>
+            </div>
+
+            <!-- Grille des 4 fonctionnalités (2x2) -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+
+                <!-- 1. Gestion des formations -->
+                <div
+                    class="rounded-xl bg-slate-900/80 border border-slate-800/80 p-4 flex items-start gap-3.5 transition-all duration-300 hover:border-primary/50 hover:bg-slate-900">
+                    <div
+                        class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/15 border border-primary/30 text-primary">
+                        <ng-icon name="lucideBoxes" class="text-xl" />
+                    </div>
+                    <div>
+                        <h3 class="text-xs font-bold text-white tracking-wide">Gestion des formations et des licences
+                        </h3>
+                        <p class="text-[11px] text-slate-400 mt-1 leading-normal">Catalogue et attributions simplifiées.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 2. Gestion des apprenants -->
+                <div
+                    class="rounded-xl bg-slate-900/80 border border-slate-800/80 p-4 flex items-start gap-3.5 transition-all duration-300 hover:border-primary/50 hover:bg-slate-900">
+                    <div
+                        class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/15 border border-primary/30 text-primary">
+                        <ng-icon name="lucideUsers" class="text-xl" />
+                    </div>
+                    <div>
+                        <h3 class="text-xs font-bold text-white tracking-wide">Gestion des apprenants et des groupes
+                        </h3>
+                        <p class="text-[11px] text-slate-400 mt-1 leading-normal">Suivi par cohorte et permissions.</p>
+                    </div>
+                </div>
+
+                <!-- 3. Suivi des résultats -->
+                <div
+                    class="rounded-xl bg-slate-900/80 border border-slate-800/80 p-4 flex items-start gap-3.5 transition-all duration-300 hover:border-primary/50 hover:bg-slate-900">
+                    <div
+                        class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/15 border border-primary/30 text-primary">
+                        <ng-icon name="lucideTrendingUp" class="text-xl" />
+                    </div>
+                    <div>
+                        <h3 class="text-xs font-bold text-white tracking-wide">Suivi des résultats et de la progression
+                        </h3>
+                        <p class="text-[11px] text-slate-400 mt-1 leading-normal">Analytique détaillée des sessions VR.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 4. Connexion Moodle -->
+                <div
+                    class="rounded-xl bg-slate-900/80 border border-slate-800/80 p-4 flex items-start gap-3.5 transition-all duration-300 hover:border-primary/50 hover:bg-slate-900">
+                    <div
+                        class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/15 border border-primary/30 text-primary">
+                        <ng-icon name="lucidePlug" class="text-xl" />
+                    </div>
+                    <div>
+                        <h3 class="text-xs font-bold text-white tracking-wide">Connexion et administration Moodle</h3>
+                        <p class="text-[11px] text-slate-400 mt-1 leading-normal">Passerelle LMS bidirectionnelle.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+
+<!-- ================= SECTION CTA & TÉMOIGNAGE ================= -->
+<section class="py-16 px-6 lg:px-12 bg-slate-50 border-t border-slate-200/80">
+    <div
+        class="max-w-7xl mx-auto rounded-3xl bg-white border border-slate-200/80 p-8 lg:p-12 shadow-xl shadow-slate-900/5">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+
+            <!-- 1. Côté Gauche : Témoignage client (6 colonnes) -->
+            <div class="lg:col-span-6 flex flex-col sm:flex-row items-center gap-6">
+                <!-- Photo du témoignage avec coins arrondis -->
+                <div class="relative w-full sm:w-48 h-40 shrink-0 rounded-2xl overflow-hidden shadow-md">
+                    <img src="/images/vr.avif" alt="Témoignage utilisateur VR"
+                        class="w-full h-full object-cover object-center" />
+                </div>
+                <!-- Citation -->
+                <div class="flex-1 space-y-3">
+                    <div class="text-3xl text-primary font-serif font-black leading-none">“</div>
+                    <p class="text-xs sm:text-sm text-slate-700 italic leading-relaxed">
+                        Grâce à <strong class="font-semibold text-slate-900">WebCampus</strong>, nous avons pu former
+                        nos équipes sur des équipements complexes tout en <span
+                            class="font-semibold text-slate-900">réduisant les coûts</span> et les <span
+                            class="font-semibold text-slate-900">temps d'arrêt</span>. L'intégration avec Moodle est un
+                        vrai plus !
+                    </p>
+                    <div class="pt-1">
+                        <p class="text-xs font-bold text-slate-900">Sophie L.</p>
+                        <p class="text-[11px] text-slate-500 font-medium">Responsable formation — Industrie</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Séparateur vertical (masqué sur mobile) -->
+            <div class="hidden lg:block lg:col-span-1 h-32 border-r border-slate-200/80 my-auto"></div>
+
+            <!-- 2. Côté Droit : Appel à l'action CTA (5 colonnes) -->
+            <div class="lg:col-span-5 flex flex-col justify-center space-y-4 text-left lg:pl-4">
+                <h3 class="text-xl sm:text-2xl font-bold tracking-tight text-slate-900">
+                    Prêt à transformer vos formations ?
+                </h3>
+                <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    Découvrez comment <span class="text-primary font-medium">WebCampus</span> peut répondre à vos
+                    besoins et demandez une démonstration personnalisée.
+                </p>
+                <!-- Boutons -->
+                <div class="flex flex-wrap items-center gap-3 pt-2">
+                    <a href="#demo"  (click)="openContactForm()"
+                        class="inline-flex items-center justify-center rounded-xl bg-primary px-5 py-2.5 text-xs font-semibold text-white shadow-md shadow-primary/20 transition-all duration-300 hover:bg-primary/90 hover:scale-105">
+                        Demander une démo
+                    </a>
+                    <a href="#contact"   (click)="openContactForm()"
+                        class="inline-flex items-center justify-center rounded-xl border border-primary text-primary px-5 py-2.5 text-xs font-semibold bg-white transition-all duration-300 hover:bg-primary/5 hover:scale-105">
+                        Nous contacter
+                    </a>
+                </div>
+            </div>
 
         </div>
     </div>
 </section>
+
+<!-- ================= FOOTER WEBCAMPUS ================= -->
+<footer class="bg-slate-950 border-t border-slate-900 py-8 px-6 lg:px-12 text-slate-400">
+    <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-6">
+
+        <!-- Logo & Sous-titre -->
+        <div class="flex items-center gap-3">
+            <div
+                class="flex h-9 w-9 items-center justify-center rounded-xl bg-primary text-white font-bold text-lg shadow-md shadow-primary/30">
+                W
+            </div>
+            <div>
+                <span class="text-lg font-bold tracking-tight text-white">WebCampus</span>
+                <div class="text-[10px] text-slate-400 tracking-wider">VR » Moodle | Formations immersives</div>
+            </div>
+        </div>
+
+        <!-- Navigation principale -->
+        <nav class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs font-medium text-slate-300">
+            <a href="#accueil" class="transition-colors hover:text-primary">Accueil</a>
+            <a href="#expertises" class="transition-colors hover:text-primary">Formations VR</a>
+            <a href="#fonctionnalites" class="transition-colors hover:text-primary">Fonctionnalités</a>
+            <a href="#moodle" class="transition-colors hover:text-primary">Moodle</a>
+            <a href="#tarifs" class="transition-colors hover:text-primary">Tarifs</a>
+            <a href="#apropos" class="transition-colors hover:text-primary">À propos</a>
+            <a href="#contact" class="transition-colors hover:text-primary">Contact</a>
+        </nav>
+
+        <!-- Réseaux sociaux & Copyright -->
+        <div class="flex items-center gap-6 text-xs text-slate-500">
+            <!-- Icônes Lucide -->
+            <div class="flex items-center gap-4 text-slate-400">
+                <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"
+                    class="transition-colors hover:text-primary">
+                    <ng-icon name="lucideLinkedin" class="text-base" />
+                </a>
+                <a href="https://youtube.com" target="_blank" aria-label="YouTube"
+                    class="transition-colors hover:text-primary">
+                    <ng-icon name="lucideYoutube" class="text-base" />
+                </a>
+                <a href="mailto:contact@webcampus-online.fr" aria-label="Email" class="transition-colors hover:text-primary">
+                    <ng-icon name="lucideMail" class="text-base" />
+                </a>
+            </div>
+
+            <!-- Copyright -->
+            <span class="text-[11px] border-l border-slate-800 pl-4">
+                © 2026 WebCampus. Tous droits réservés.
+            </span>
+        </div>
+
+    </div>
+</footer>

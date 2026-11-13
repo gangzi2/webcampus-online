@@ -1,0 +1,41 @@
+:host {
+  display: block;
+}
+
+/* Transition pour les messages d'erreur */
+::ng-deep .text-destructive {
+  animation: slideDown 0.2s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animation du message de succès */
+::ng-deep .bg-green-50 {
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Amélioration visuelle des inputs au focus */
+::ng-deep input[hlmInput]:focus,
+::ng-deep textarea[hlmTextarea]:focus {
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
