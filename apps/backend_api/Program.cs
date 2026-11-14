@@ -32,11 +32,20 @@ builder.Services.AddRateLimiter(options =>
                 QueueLimit = 0
             }));
 });
-if (builder.Environment.IsDevelopment())
+builder.Services.AddCors(options =>
 {
-    builder.Services.AddCors(options => options.AddPolicy("local-client",
-        policy => policy.WithOrigins("http://localhost:4200").AllowAnyHeader().AllowAnyMethod()));
-}
+    options.AddPolicy("WebCampusCors", policy =>
+    {
+        policy
+            .WithOrigins(
+                "https://webcampus-online.fr",
+                "https://www.webcampus-online.fr",
+                "http://localhost:4200"
+            )
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
 // 3. CONFIGURATION DE L'AUTHENTIFICATION JWT
 var jwtKey = builder.Configuration["Jwt:Key"] ?? throw new InvalidOperationException("JWT Key not found.");
 
@@ -78,9 +87,8 @@ if (app.Environment.IsDevelopment())
  
 
  
-// 4. PIPELINE DE SÉCURITÉ (Ordre critique !)
-if (app.Environment.IsDevelopment())
-    app.UseCors("local-client");
+// 4. PIPELINE DE SÉCURITÉ (Ordre critique !) 
+app.UseCors("WebCampusCors");
 app.UseAuthentication();
 app.UseAuthorization();
 app.UseRateLimiter();
