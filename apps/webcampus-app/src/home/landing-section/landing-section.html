@@ -21,7 +21,7 @@
             sur mesure pour transformer vos parcours d'apprentissage.
         </p>
         <div class="mt-9 flex flex-wrap items-center gap-4">
-            <a href="#contact" class="rounded-lg bg-primary px-7 py-3.5 font-semibold text-primary-foreground
+            <a href="#contact" (click)="openContactForm()" class="rounded-lg bg-primary px-7 py-3.5 font-semibold text-primary-foreground
                       transition hover:opacity-90">
                 Parlons de votre projet
             </a>
@@ -591,7 +591,7 @@
             <a href="#moodle" class="transition-colors hover:text-primary">Moodle</a>
             <a href="#tarifs" class="transition-colors hover:text-primary">Tarifs</a>
             <a href="#apropos" class="transition-colors hover:text-primary">À propos</a>
-            <a href="#contact" class="transition-colors hover:text-primary">Contact</a>
+            <a href="#contact" (click)="openContactForm(); $event.preventDefault()" class="transition-colors hover:text-primary">Contact</a>
         </nav>
 
         <!-- Réseaux sociaux & Copyright -->

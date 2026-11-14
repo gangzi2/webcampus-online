@@ -11,7 +11,6 @@ import {
   lucideWrench,
   lucideYoutube,
 } from '@ng-icons/lucide';
-import type { ContactMail } from '../../models/Contact';
 
 import { WebcampusCard } from '@webcampus2/common';
 import { DialogService } from '../../core/dialog/dialog-service';
@@ -46,13 +45,6 @@ export class LandingSection {
         import('../contact-form/contact-form.component').then(
           (m) => m.ContactFormComponent,
         ),
-      signal({
-        onSubmit: async (payload: ContactMail) => this.sendmail(payload),
-      }),
     );
-  }
-
-  sendmail(payload: ContactMail): void {
-    console.log(payload);
   }
 }

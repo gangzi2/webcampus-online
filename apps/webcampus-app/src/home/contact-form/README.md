@@ -73,62 +73,29 @@ this.contactForm = this.fb.group({
 });
 ```
 
-### Gérer la soumission
+### Envoi des messages
 
-Modifiez la méthode `onSubmit()` pour intégrer votre backend:
+Le formulaire appelle `POST /api/contact`. En développement, l'adresse de
+l'API est définie dans `src/environements/environement.developement.ts`.
+En production, `src/environements/environement.ts` utilise la même origine :
+le serveur frontal doit relayer `/api/` vers l'API .NET.
 
-```typescript
-onSubmit(): void {
-  if (this.contactForm.invalid) return;
+Configurez côté serveur les variables d'environnement `EmailSettings__Server`,
+`EmailSettings__Port`, `EmailSettings__SenderEmail`,
+`EmailSettings__SenderPassword` et `EmailSettings__ContactRecipient`. Ne
+placez pas de mot de passe dans le code ou les fichiers Angular. Le destinataire
+est choisi côté serveur ; l'adresse du visiteur sert d'adresse de réponse.
+Redémarrez l'API après avoir modifié son environnement.
 
-  this.isSubmitting.set(true);
-  const formData = this.contactForm.value;
-
-  // Appelez votre service API
-  this.contactService.sendMessage(formData).subscribe(
-    () => {
-      this.submittedSuccessfully.set(true);
-      // ...
-    },
-    (error) => {
-      // Gérez l'erreur
-    }
-  );
-}
-```
+En développement, l'API autorise l'origine `http://localhost:4200`. La route
+limite chaque adresse IP à cinq requêtes par minute. Si l'API est derrière un
+proxy inverse, configurez correctement la transmission des adresses client.
 
 ### Ajouter des champs
 
 1. Ajoutez le contrôle au `FormGroup`
 2. Créez une nouvelle section `<div>` avec label, input, et validation
 3. Mettez à jour les validations dans `getFieldError()`
-
-## 📋 Exemple d'intégration d'API
-
-```typescript
-constructor(private fb: FormBuilder, private http: HttpClient) {
-  // ...
-}
-
-onSubmit(): void {
-  if (this.contactForm.invalid) return;
-
-  this.isSubmitting.set(true);
-
-  this.http.post('/api/contact', this.contactForm.value).subscribe({
-    next: (response) => {
-      this.isSubmitting.set(false);
-      this.submittedSuccessfully.set(true);
-      this.contactForm.reset();
-      setTimeout(() => this.submittedSuccessfully.set(false), 5000);
-    },
-    error: (error) => {
-      this.isSubmitting.set(false);
-      console.error('Erreur:', error);
-    }
-  });
-}
-```
 
 ## 🔐 Sécurité
 

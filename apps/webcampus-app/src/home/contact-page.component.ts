@@ -36,8 +36,8 @@ import { ContactFormComponent } from './contact-form/contact-form.component';
                 </div>
                 <div>
                   <h3 class="font-semibold text-foreground mb-2">Email</h3>
-                  <a href="mailto:contact@webcampus.com" class="text-primary hover:underline">
-                    contact@webcampus.com
+                  <a href="mailto:contact@webcampus-online.fr" class="text-primary hover:underline">
+                    contact@webcampus-online.fr
                   </a>
                 </div>
               </div>

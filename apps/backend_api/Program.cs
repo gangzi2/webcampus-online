@@ -5,6 +5,7 @@ using backend_api.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using System.Threading.RateLimiting;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
@@ -17,6 +18,25 @@ builder.Services.AddSingleton(new MySqlDataSource(connectionString));
 builder.Services.AddScoped<UserRepository>();
 builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<EmailService>();
+builder.Services.AddScoped<IEmailService>(provider => provider.GetRequiredService<EmailService>());
+builder.Services.AddRateLimiter(options =>
+{
+    options.RejectionStatusCode = StatusCodes.Status429TooManyRequests;
+    options.AddPolicy("contact", context =>
+        RateLimitPartition.GetFixedWindowLimiter(
+            context.Connection.RemoteIpAddress?.ToString() ?? "unknown",
+            _ => new FixedWindowRateLimiterOptions
+            {
+                PermitLimit = 5,
+                Window = TimeSpan.FromMinutes(1),
+                QueueLimit = 0
+            }));
+});
+if (builder.Environment.IsDevelopment())
+{
+    builder.Services.AddCors(options => options.AddPolicy("local-client",
+        policy => policy.WithOrigins("http://localhost:4200").AllowAnyHeader().AllowAnyMethod()));
+}
 // 3. CONFIGURATION DE L'AUTHENTIFICATION JWT
 var jwtKey = builder.Configuration["Jwt:Key"] ?? throw new InvalidOperationException("JWT Key not found.");
 
@@ -59,8 +79,11 @@ if (app.Environment.IsDevelopment())
 
  
 // 4. PIPELINE DE SÉCURITÉ (Ordre critique !)
+if (app.Environment.IsDevelopment())
+    app.UseCors("local-client");
 app.UseAuthentication();
 app.UseAuthorization();
+app.UseRateLimiter();
 
 
 app.MapGet("/", async (MySqlDataSource dataSource) =>

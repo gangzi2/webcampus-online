@@ -50,7 +50,13 @@
         "development": {
           "optimization": false,
           "extractLicenses": false,
-          "sourceMap": true
+          "sourceMap": true,
+          "fileReplacements": [
+            {
+              "replace": "apps/webcampus-app/src/environements/environement.ts",
+              "with": "apps/webcampus-app/src/environements/environement.developement.ts"
+            }
+          ]
         }
       }
     },

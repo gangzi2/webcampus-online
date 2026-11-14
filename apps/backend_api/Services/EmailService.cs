@@ -2,7 +2,7 @@
 using System.Net;
 using System.Net.Mail;
 using Microsoft.Extensions.Configuration;
-public class EmailService
+public class EmailService : IEmailService
 {
     private readonly IConfiguration _configuration;
 
@@ -12,6 +12,20 @@ public class EmailService
     }
 
     public async Task SendEmailAsync(string to, string subject, string body)
+    {
+        await SendAsync(to, subject, body, true, null, CancellationToken.None);
+    }
+
+    public async Task SendContactEmailAsync(string replyTo, string subject, string body, CancellationToken cancellationToken)
+    {
+        var recipient = _configuration["EmailSettings:ContactRecipient"];
+        if (string.IsNullOrWhiteSpace(recipient))
+            throw new InvalidOperationException("EmailSettings:ContactRecipient is not configured.");
+
+        await SendAsync(recipient, subject, body, false, replyTo, cancellationToken);
+    }
+
+    private async Task SendAsync(string to, string subject, string body, bool isBodyHtml, string? replyTo, CancellationToken cancellationToken)
     {
         var smtpServer = _configuration["EmailSettings:Server"];
         var smtpPort = int.Parse(_configuration["EmailSettings:Port"] ?? "587");
@@ -24,15 +38,17 @@ public class EmailService
             EnableSsl = true
         };
 
-        var mailMessage = new MailMessage
+        using var mailMessage = new MailMessage
         {
             From = new MailAddress(senderEmail!, "WebCampus Support"),
             Subject = subject,
             Body = body,
-            IsBodyHtml = true // Permet d'envoyer du HTML (liens, styles, etc.)
+            IsBodyHtml = isBodyHtml
         };
         
         mailMessage.To.Add(to);
-        await client.SendMailAsync(mailMessage);
+        if (replyTo is not null)
+            mailMessage.ReplyToList.Add(new MailAddress(replyTo));
+        await client.SendMailAsync(mailMessage, cancellationToken);
     }
 }

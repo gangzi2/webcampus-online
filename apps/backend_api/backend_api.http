@@ -4,3 +4,15 @@ GET {{backend_api_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###
+
+### Envoyer un message de contact
+POST {{backend_api_HostAddress}}/api/contact
+Content-Type: application/json
+
+{
+  "name": "Jean Dupont",
+  "email": "jean@example.com",
+  "phone": "+33 6 12 34 56 78",
+  "subject": "Demande de renseignements",
+  "message": "Bonjour, je souhaite obtenir des renseignements sur vos formations."
+}

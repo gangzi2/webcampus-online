@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, signal } from '@angular/core';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Component, DestroyRef, inject, signal } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import {
   FormBuilder,
-  FormGroup,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
@@ -11,6 +12,8 @@ import { lucideCheckCircle, lucideSendHorizontal } from '@ng-icons/lucide';
 import { HlmButton } from '@spartan-ng/helm/button';
 import { HlmInput } from '@spartan-ng/helm/input';
 import { HlmTextarea } from '@spartan-ng/helm/textarea';
+import { finalize } from 'rxjs';
+import { environment } from '../../environements/environement';
 
 @Component({
   selector: 'app-contact-form',
@@ -55,6 +58,12 @@ import { HlmTextarea } from '@spartan-ng/helm/textarea';
               Nous vous recontacterons dès que possible.
             </p>
           </div>
+        </div>
+      }
+
+      @if (submitError()) {
+        <div role="alert" class="mb-6 rounded-lg border border-destructive p-4 text-sm text-destructive">
+          {{ submitError() }}
         </div>
       }
 
@@ -196,43 +205,64 @@ import { HlmTextarea } from '@spartan-ng/helm/textarea';
   styleUrl: './contact-form.component.scss',
 })
 export class ContactFormComponent {
-  contactForm: FormGroup;
-  isSubmitting = signal(false);
-  submittedSuccessfully = signal(false);
-  fb: FormBuilder = inject(FormBuilder);
-  constructor() {
-    this.contactForm = this.fb.group({
-      name: ['', [Validators.required, Validators.minLength(2)]],
-      email: ['', [Validators.required, Validators.email]],
-      phone: ['', [Validators.pattern(/^[\d\s+().-]*$/)]],
-      subject: ['', [Validators.required, Validators.minLength(3)]],
-      message: ['', [Validators.required, Validators.minLength(10)]],
-    });
-  }
+  private readonly http = inject(HttpClient);
+  private readonly destroyRef = inject(DestroyRef);
+  private readonly fb = inject(FormBuilder).nonNullable;
+  readonly isSubmitting = signal(false);
+  readonly submittedSuccessfully = signal(false);
+  readonly submitError = signal<string | null>(null);
+  readonly contactForm = this.fb.group({
+    name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(120)]],
+    email: ['', [Validators.required, Validators.email, Validators.maxLength(254)]],
+    phone: ['', [Validators.pattern(/^[\d\s+().-]*$/), Validators.maxLength(40)]],
+    subject: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(200), Validators.pattern(/^[^\r\n]+$/)]],
+    message: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10000)]],
+  });
 
   onSubmit(): void {
-    if (this.contactForm.invalid) {
+    if (this.contactForm.invalid || this.isSubmitting()) {
+      this.contactForm.markAllAsTouched();
+      return;
+    }
+
+    const values = this.contactForm.getRawValue();
+    const payload = {
+      name: values.name.trim(),
+      email: values.email.trim(),
+      phone: values.phone.trim(),
+      subject: values.subject.trim(),
+      message: values.message.trim(),
+    };
+    if (payload.name.length < 2 || payload.subject.length < 3 || payload.message.length < 10) {
+      this.submitError.set('Veuillez remplir les champs obligatoires avec un contenu valide.');
       return;
     }
 
     this.isSubmitting.set(true);
-    const formData = this.contactForm.value;
-
-    setTimeout(() => {
-      console.log('Formulaire soumis:', formData);
-      this.isSubmitting.set(false);
-      this.submittedSuccessfully.set(true);
-      this.contactForm.reset();
-
-      setTimeout(() => {
-        this.submittedSuccessfully.set(false);
-      }, 5000);
-    }, 1500);
+    this.submitError.set(null);
+    this.submittedSuccessfully.set(false);
+    this.http.post<void>(`${environment.apiUrl}/api/contact`, payload)
+      .pipe(
+        takeUntilDestroyed(this.destroyRef),
+        finalize(() => this.isSubmitting.set(false)),
+      )
+      .subscribe({
+        next: () => {
+          this.submittedSuccessfully.set(true);
+          this.contactForm.reset();
+        },
+        error: (error: HttpErrorResponse) => {
+          this.submitError.set(error.status === 429
+            ? 'Trop de tentatives. Veuillez réessayer dans une minute.'
+            : "L'envoi a échoué. Veuillez réessayer ultérieurement.");
+        },
+      });
   }
 
   onReset(): void {
     this.contactForm.reset();
     this.submittedSuccessfully.set(false);
+    this.submitError.set(null);
   }
 
   isFieldInvalid(fieldName: string): boolean {
@@ -250,6 +280,10 @@ export class ContactFormComponent {
     if (field.errors['minlength']) {
       const minLength = field.errors['minlength'].requiredLength;
       return `Minimum ${minLength} caractères requis.`;
+    }
+    if (field.errors['maxlength']) {
+      const maxLength = field.errors['maxlength'].requiredLength;
+      return `Maximum ${maxLength} caractères autorisés.`;
     }
     if (field.errors['pattern']) return 'Format invalide pour ce champ.';
 
