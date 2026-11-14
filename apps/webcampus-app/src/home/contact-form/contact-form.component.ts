@@ -30,10 +30,10 @@ import { environment } from '../../environements/environement';
   ],
   template: `
     <div
-      class="w-full max-w-2xl mx-auto p-6 bg-background rounded-lg border border-border shadow-sm"
+      class="w-full max-w-4xl mx-auto p-6 sm:p-8 bg-background rounded-lg border border-border shadow-sm"
     >
       <div class="mb-8">
-        <h2 class="text-2xl font-bold text-foreground mb-2">Nous contacter</h2>
+        <h2 class="text-3xl font-bold text-foreground mb-2">Nous contacter</h2>
         <p class="text-muted-foreground">Envoyez-nous un message.</p>
       </div>
       <!-- Message de succès -->
@@ -66,7 +66,7 @@ import { environment } from '../../environements/environement';
         </div>
       }
 
-      <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="space-y-6">
+      <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="space-y-8">
         <!-- Nom -->
         <div class="space-y-2">
           <label for="name" class="block text-sm font-medium text-foreground"
@@ -78,6 +78,7 @@ import { environment } from '../../environements/environement';
             type="text"
             formControlName="name"
             placeholder="Jean Dupont"
+            class="h-12"
             [attr.aria-invalid]="isFieldInvalid('name')"
           />
 
@@ -99,6 +100,7 @@ import { environment } from '../../environements/environement';
             type="email"
             formControlName="email"
             placeholder="jean@example.com"
+            class="h-12"
             [attr.aria-invalid]="isFieldInvalid('email')"
           />
 
@@ -120,6 +122,7 @@ import { environment } from '../../environements/environement';
             type="tel"
             formControlName="phone"
             placeholder="+33 6 12 34 56 78"
+            class="h-12"
             [attr.aria-invalid]="isFieldInvalid('phone')"
           />
           @if (isFieldInvalid('phone')) {
@@ -140,6 +143,7 @@ import { environment } from '../../environements/environement';
             type="text"
             formControlName="subject"
             placeholder="Comment pouvons-nous vous aider ?"
+            class="h-12"
             [attr.aria-invalid]="isFieldInvalid('subject')"
           />
           @if (isFieldInvalid('subject')) {
@@ -159,7 +163,7 @@ import { environment } from '../../environements/environement';
             id="message"
             formControlName="message"
             placeholder="Décrivez votre demande en détail..."
-            rows="6"
+            rows="8"
             [attr.aria-invalid]="isFieldInvalid('message')"
           ></textarea>
           @if (isFieldInvalid('message')) {
