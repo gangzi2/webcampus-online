@@ -28,3 +28,18 @@ test('les pages restent accessibles directement sur mobile', async ({ page }) =>
   await expect(page).toHaveURL(/\/contact$/);
   await expect(page.getByLabel('Nom complet')).toBeVisible();
 });
+
+test('les pages légales sont accessibles depuis le pied de page et directement', async ({ page }) => {
+  await page.goto('/');
+  const footer = page.getByRole('navigation', { name: 'Navigation de pied de page' });
+  await footer.getByRole('link', { name: 'Mentions légales' }).click();
+  await expect(page).toHaveURL(/\/mentions-legales$/);
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Mentions légales');
+
+  await footer.getByRole('link', { name: 'Politique de confidentialité' }).click();
+  await expect(page).toHaveURL(/\/politique-de-confidentialite$/);
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Politique de confidentialité');
+
+  await page.reload();
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Politique de confidentialité');
+});
