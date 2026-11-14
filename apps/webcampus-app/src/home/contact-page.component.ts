@@ -1,99 +1,57 @@
 import { Component } from '@angular/core';
+import { NgIcon, provideIcons } from '@ng-icons/core';
+import { lucideMail, lucideMapPin, lucideMessagesSquare } from '@ng-icons/lucide';
 import { ContactFormComponent } from './contact-form/contact-form.component';
 
 @Component({
   selector: 'app-contact-page',
-  standalone: true,
-  imports: [ContactFormComponent],
+  imports: [ContactFormComponent, NgIcon],
+  providers: [provideIcons({ lucideMail, lucideMapPin, lucideMessagesSquare })],
   template: `
-    <div class="min-h-screen bg-gradient-to-br from-background via-muted to-background py-16 px-4">
-      <div class="max-w-4xl mx-auto">
-        <!-- Header -->
-        <div class="text-center mb-12">
-          <h1 class="text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Restez en contact avec nous
-          </h1>
-          <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Avez-vous des questions ou des commentaires ? Nous aimerions vous entendre.
-            N'hésitez pas à nous contacter à propos de n'importe quoi.
+    <section class="relative overflow-hidden bg-background px-6 py-16 sm:py-24 lg:px-12">
+      <div aria-hidden="true" class="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+      <div class="relative mx-auto grid max-w-6xl gap-12 lg:grid-cols-2 lg:gap-20">
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-[0.18em] text-primary">Contact</p>
+          <h1 class="mt-5 max-w-xl leading-tight text-foreground">Parlons de votre <span class="text-primary">projet.</span></h1>
+          <p class="mt-6 max-w-lg text-lg leading-relaxed text-slate-300">
+            Formation immersive, plateforme e-learning ou application sur mesure :
+            racontez-nous vos besoins et échangeons sur votre projet.
           </p>
-        </div>
 
-        <!-- Contact Form -->
-        <div class="grid md:grid-cols-3 gap-8">
-          <!-- Formulaire -->
-          <div class="md:col-span-2">
-            <app-contact-form></app-contact-form>
-          </div>
-
-          <!-- Informations de contact -->
-          <div class="space-y-6">
-            <!-- Email -->
-            <div class="p-6 bg-card rounded-lg border border-border">
-              <div class="flex items-start gap-4">
-                <div class="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <span class="text-xl">✉️</span>
-                </div>
-                <div>
-                  <h3 class="font-semibold text-foreground mb-2">Email</h3>
-                  <a href="mailto:contact@webcampus-online.fr" class="text-primary hover:underline">
-                    contact@webcampus-online.fr
-                  </a>
-                </div>
+          <div class="mt-10 space-y-4">
+            <div class="flex items-start gap-4 rounded-xl border border-border bg-slate-900/60 p-5">
+              <span class="flex size-11 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                <ng-icon name="lucideMail" size="22" />
+              </span>
+              <div>
+                <h2 class="border-0 p-0 text-base font-semibold text-foreground">Écrivez-nous</h2>
+                <a class="mt-1 inline-block break-all text-slate-300 hover:text-primary" href="mailto:contact@webcampus-online.fr">contact&#64;webcampus-online.fr</a>
               </div>
             </div>
-
-            <!-- Téléphone -->
-            <div class="p-6 bg-card rounded-lg border border-border">
-              <div class="flex items-start gap-4">
-                <div class="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <span class="text-xl">📞</span>
-                </div>
-                <div>
-                  <h3 class="font-semibold text-foreground mb-2">Téléphone</h3>
-                  <a href="tel:+33123456789" class="text-primary hover:underline">
-                    +33 (0) 1 23 45 67 89
-                  </a>
-                </div>
+            <div class="flex items-start gap-4 rounded-xl border border-border bg-slate-900/60 p-5">
+              <span class="flex size-11 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                <ng-icon name="lucideMapPin" size="22" />
+              </span>
+              <div>
+                <h2 class="border-0 p-0 text-base font-semibold text-foreground">Adresse postale</h2>
+                <p class="mt-1 text-slate-300">4 rue Paul Vallier<br />38400 Saint-Martin-d'Hères<br />France</p>
               </div>
             </div>
-
-            <!-- Adresse -->
-            <div class="p-6 bg-card rounded-lg border border-border">
-              <div class="flex items-start gap-4">
-                <div class="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <span class="text-xl">📍</span>
-                </div>
-                <div>
-                  <h3 class="font-semibold text-foreground mb-2">Adresse</h3>
-                  <p class="text-sm text-muted-foreground">
-                    123 Rue de la Tech<br />
-                    75000 Paris<br />
-                    France
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Horaires -->
-            <div class="p-6 bg-card rounded-lg border border-border">
-              <div class="flex items-start gap-4">
-                <div class="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                  <span class="text-xl">🕐</span>
-                </div>
-                <div>
-                  <h3 class="font-semibold text-foreground mb-2">Horaires</h3>
-                  <p class="text-sm text-muted-foreground">
-                    Lun - Ven: 9:00 - 18:00<br />
-                    Sam - Dim: Fermé
-                  </p>
-                </div>
+            <div class="flex items-start gap-4 rounded-xl border border-border bg-slate-900/60 p-5">
+              <span class="flex size-11 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                <ng-icon name="lucideMessagesSquare" size="22" />
+              </span>
+              <div>
+                <h2 class="border-0 p-0 text-base font-semibold text-foreground">Une question ?</h2>
+                <p class="mt-1 text-slate-300">Utilisez le formulaire pour nous présenter votre demande.</p>
               </div>
             </div>
           </div>
         </div>
+        <app-contact-form></app-contact-form>
       </div>
-    </div>
+    </section>
   `,
 })
 export class ContactPageComponent {}

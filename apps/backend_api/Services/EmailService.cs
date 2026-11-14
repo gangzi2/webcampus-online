@@ -25,30 +25,49 @@ public class EmailService : IEmailService
         await SendAsync(recipient, subject, body, false, replyTo, cancellationToken);
     }
 
-    private async Task SendAsync(string to, string subject, string body, bool isBodyHtml, string? replyTo, CancellationToken cancellationToken)
+private async Task SendAsync(
+    string to,
+    string subject,
+    string body,
+    bool isBodyHtml,
+    string? replyTo,
+    CancellationToken cancellationToken)
+{
+    var smtpServer = _configuration["EmailSettings:Server"];
+    var smtpPort = int.Parse(_configuration["EmailSettings:Port"] ?? "587");
+
+    var smtpUsername = _configuration["EmailSettings:Username"];
+    var senderEmail = _configuration["EmailSettings:SenderEmail"];
+    var senderPassword = _configuration["EmailSettings:SenderPassword"];
+
+    if (string.IsNullOrWhiteSpace(smtpUsername) ||
+        string.IsNullOrWhiteSpace(senderEmail) ||
+        string.IsNullOrWhiteSpace(senderPassword))
     {
-        var smtpServer = _configuration["EmailSettings:Server"];
-        var smtpPort = int.Parse(_configuration["EmailSettings:Port"] ?? "587");
-        var senderEmail = _configuration["EmailSettings:SenderEmail"];
-        var senderPassword = _configuration["EmailSettings:SenderPassword"];
-
-        using var client = new SmtpClient(smtpServer, smtpPort)
-        {
-            Credentials = new NetworkCredential(senderEmail, senderPassword),
-            EnableSsl = true
-        };
-
-        using var mailMessage = new MailMessage
-        {
-            From = new MailAddress(senderEmail!, "WebCampus Support"),
-            Subject = subject,
-            Body = body,
-            IsBodyHtml = isBodyHtml
-        };
-        
-        mailMessage.To.Add(to);
-        if (replyTo is not null)
-            mailMessage.ReplyToList.Add(new MailAddress(replyTo));
-        await client.SendMailAsync(mailMessage, cancellationToken);
+        throw new InvalidOperationException(
+            "SMTP configuration is incomplete.");
     }
+
+    using var client = new SmtpClient(smtpServer, smtpPort)
+    {
+        UseDefaultCredentials = false,
+        Credentials = new NetworkCredential(smtpUsername, senderPassword),
+        EnableSsl = true
+    };
+
+    using var mailMessage = new MailMessage
+    {
+        From = new MailAddress(senderEmail, "WebCampus Support"),
+        Subject = subject,
+        Body = body,
+        IsBodyHtml = isBodyHtml
+    };
+
+    mailMessage.To.Add(to);
+
+    if (!string.IsNullOrWhiteSpace(replyTo))
+        mailMessage.ReplyToList.Add(new MailAddress(replyTo));
+
+    await client.SendMailAsync(mailMessage, cancellationToken);
+}
 }

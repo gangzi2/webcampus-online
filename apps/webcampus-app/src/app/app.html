@@ -1,17 +1,5 @@
-<!-- <app-nx-welcome></app-nx-welcome> -->
 <lib-landing-header></lib-landing-header>
-<main class="webcampus-page p-0">  
-    <div
-        class="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none">
-    </div>
-<app-home-page></app-home-page>
-
-
- 
- 
-<!-- <section class="relative overflow-hidden py-12">
-   <app-vr-scene [projectName]="'Ams'"></app-vr-scene>
-</section> -->
- 
+<main class="webcampus-page p-0">
+  <router-outlet></router-outlet>
 </main>
-<router-outlet></router-outlet>
+<app-site-footer></app-site-footer>

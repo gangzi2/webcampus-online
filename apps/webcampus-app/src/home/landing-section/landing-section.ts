@@ -5,11 +5,8 @@ import {
   lucideCode2,
   lucideGlasses,
   lucideGraduationCap,
-  lucideLinkedin,
-  lucideMail,
   lucideShieldCheck,
   lucideWrench,
-  lucideYoutube,
 } from '@ng-icons/lucide';
 
 import { WebcampusCard } from '@webcampus2/common';
@@ -26,9 +23,6 @@ import { VrSceneComponent } from '../../core/threejs/mainComponent';
       lucideWrench,
       lucideBoxes,
       lucideShieldCheck,
-      lucideLinkedin,
-      lucideYoutube,
-      lucideMail,
     }),
   ],
   templateUrl: './landing-section.html',
