@@ -275,7 +275,7 @@ export class ContactFormComponent {
     this.submitError.set(null);
     this.submittedSuccessfully.set(false);
     this.http
-      .post<void>(`${environment.apiUrl}/contact`, payload)
+      .post<void>(`${environment.apiUrl}/api/Contact`, payload)
       .pipe(
         takeUntilDestroyed(this.destroyRef),
         finalize(() => this.isSubmitting.set(false)),
