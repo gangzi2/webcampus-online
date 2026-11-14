@@ -2,6 +2,10 @@
   display: block;
 }
 
+:host-context(.cdk-overlay-pane) {
+  width: min(92vw, 64rem);
+}
+
 /* Transition pour les messages d'erreur */
 ::ng-deep .text-destructive {
   animation: slideDown 0.2s ease-out;

@@ -30,7 +30,7 @@ import { environment } from '../../environements/environement';
   ],
   template: `
     <div
-      class="w-full max-w-4xl mx-auto p-6 sm:p-8 bg-background rounded-lg border border-border shadow-sm"
+      class="w-full max-w-none mx-auto p-6 sm:p-10 bg-background rounded-lg border border-border shadow-sm"
     >
       <div class="mb-8">
         <h2 class="text-3xl font-bold text-foreground mb-2">Nous contacter</h2>

@@ -10,7 +10,7 @@ import { ContactFormComponent } from './contact-form/contact-form.component';
   template: `
     <section class="relative overflow-hidden bg-background px-6 py-16 sm:py-24 lg:px-12">
       <div aria-hidden="true" class="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:24px_24px]"></div>
-      <div class="relative mx-auto grid max-w-6xl gap-12 lg:grid-cols-2 lg:gap-20">
+      <div class="relative mx-auto grid max-w-7xl gap-12 lg:grid-cols-[2fr_3fr] lg:gap-16">
         <div>
           <p class="text-sm font-semibold uppercase tracking-[0.18em] text-primary">Contact</p>
           <h1 class="mt-5 max-w-xl leading-tight text-foreground">Parlons de votre <span class="text-primary">projet.</span></h1>
