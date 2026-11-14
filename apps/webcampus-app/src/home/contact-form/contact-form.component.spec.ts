@@ -1,3 +1,4 @@
+import { OverlayRef } from '@angular/cdk/overlay';
 import { provideHttpClient } from '@angular/common/http';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
@@ -29,6 +30,19 @@ describe('ContactFormComponent', () => {
     expect(component.submittedSuccessfully()).toBe(true);
     expect(component.contactForm.controls.name.value).toBe('');
     http.verify();
+  });
+
+  it('ferme la fenêtre modale depuis le bouton de fermeture', () => {
+    const overlayRef = { dispose: vi.fn() };
+    TestBed.overrideProvider(OverlayRef, { useValue: overlayRef });
+    const fixture = TestBed.createComponent(ContactFormComponent);
+    fixture.detectChanges();
+
+    fixture.nativeElement
+      .querySelector('[aria-label="Fermer le formulaire de contact"]')
+      .click();
+
+    expect(overlayRef.dispose).toHaveBeenCalledOnce();
   });
 
   it("conserve le message en cas d'échec", () => {

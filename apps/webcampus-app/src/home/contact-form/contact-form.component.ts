@@ -3,8 +3,13 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, DestroyRef, inject, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { OverlayRef } from '@angular/cdk/overlay';
 import { NgIcon, provideIcons } from '@ng-icons/core';
-import { lucideCheckCircle, lucideSendHorizontal } from '@ng-icons/lucide';
+import {
+  lucideCheckCircle,
+  lucideSendHorizontal,
+  lucideX,
+} from '@ng-icons/lucide';
 import { HlmButton } from '@spartan-ng/helm/button';
 import { HlmInput } from '@spartan-ng/helm/input';
 import { HlmTextarea } from '@spartan-ng/helm/textarea';
@@ -26,15 +31,28 @@ import { environment } from '../../environements/environement';
     provideIcons({
       lucideSendHorizontal,
       lucideCheckCircle,
+      lucideX,
     }),
   ],
   template: `
     <div
       class="w-full max-w-none mx-auto p-6 sm:p-10 bg-background rounded-lg border border-border shadow-sm"
     >
-      <div class="mb-8">
-        <h2 class="text-3xl font-bold text-foreground mb-2">Nous contacter</h2>
-        <p class="text-muted-foreground">Envoyez-nous un message.</p>
+        <div class="mb-8 flex items-start justify-between gap-4">
+          <div>
+            <h2 class="text-3xl font-bold text-foreground mb-2">Nous contacter</h2>
+            <p class="text-muted-foreground">Envoyez-nous un message.</p>
+          </div>
+          @if (overlayRef) {
+            <button
+              type="button"
+              aria-label="Fermer le formulaire de contact"
+              class="inline-flex size-10 shrink-0 items-center justify-center rounded-full text-muted-foreground transition hover:bg-muted hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              (click)="closeForm()"
+            >
+              <ng-icon name="lucideX" size="20"></ng-icon>
+            </button>
+          }
       </div>
       <!-- Message de succès -->
 
@@ -208,6 +226,7 @@ import { environment } from '../../environements/environement';
   styleUrl: './contact-form.component.scss',
 })
 export class ContactFormComponent {
+  readonly overlayRef = inject(OverlayRef, { optional: true });
   private readonly http = inject(HttpClient);
   private readonly destroyRef = inject(DestroyRef);
   private readonly fb = inject(FormBuilder).nonNullable;
@@ -245,6 +264,10 @@ export class ContactFormComponent {
       ],
     ],
   });
+
+  closeForm(): void {
+    this.overlayRef?.dispose();
+  }
 
   onSubmit(): void {
     if (this.contactForm.invalid || this.isSubmitting()) {
