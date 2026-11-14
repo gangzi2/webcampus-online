@@ -2,11 +2,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, DestroyRef, inject, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import {
-  FormBuilder,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { lucideCheckCircle, lucideSendHorizontal } from '@ng-icons/lucide';
 import { HlmButton } from '@spartan-ng/helm/button';
@@ -62,7 +58,10 @@ import { environment } from '../../environements/environement';
       }
 
       @if (submitError()) {
-        <div role="alert" class="mb-6 rounded-lg border border-destructive p-4 text-sm text-destructive">
+        <div
+          role="alert"
+          class="mb-6 rounded-lg border border-destructive p-4 text-sm text-destructive"
+        >
           {{ submitError() }}
         </div>
       }
@@ -212,11 +211,35 @@ export class ContactFormComponent {
   readonly submittedSuccessfully = signal(false);
   readonly submitError = signal<string | null>(null);
   readonly contactForm = this.fb.group({
-    name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(120)]],
-    email: ['', [Validators.required, Validators.email, Validators.maxLength(254)]],
-    phone: ['', [Validators.pattern(/^[\d\s+().-]*$/), Validators.maxLength(40)]],
-    subject: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(200), Validators.pattern(/^[^\r\n]+$/)]],
-    message: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10000)]],
+    name: [
+      '',
+      [Validators.required, Validators.minLength(2), Validators.maxLength(120)],
+    ],
+    email: [
+      '',
+      [Validators.required, Validators.email, Validators.maxLength(254)],
+    ],
+    phone: [
+      '',
+      [Validators.pattern(/^[\d\s+().-]*$/), Validators.maxLength(40)],
+    ],
+    subject: [
+      '',
+      [
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(200),
+        Validators.pattern(/^[^\r\n]+$/),
+      ],
+    ],
+    message: [
+      '',
+      [
+        Validators.required,
+        Validators.minLength(10),
+        Validators.maxLength(10000),
+      ],
+    ],
   });
 
   onSubmit(): void {
@@ -233,15 +256,22 @@ export class ContactFormComponent {
       subject: values.subject.trim(),
       message: values.message.trim(),
     };
-    if (payload.name.length < 2 || payload.subject.length < 3 || payload.message.length < 10) {
-      this.submitError.set('Veuillez remplir les champs obligatoires avec un contenu valide.');
+    if (
+      payload.name.length < 2 ||
+      payload.subject.length < 3 ||
+      payload.message.length < 10
+    ) {
+      this.submitError.set(
+        'Veuillez remplir les champs obligatoires avec un contenu valide.',
+      );
       return;
     }
 
     this.isSubmitting.set(true);
     this.submitError.set(null);
     this.submittedSuccessfully.set(false);
-    this.http.post<void>(`${environment.apiUrl}/api/contact`, payload)
+    this.http
+      .post<void>(`${environment.apiUrl}/contact`, payload)
       .pipe(
         takeUntilDestroyed(this.destroyRef),
         finalize(() => this.isSubmitting.set(false)),
@@ -252,9 +282,11 @@ export class ContactFormComponent {
           this.contactForm.reset();
         },
         error: (error: HttpErrorResponse) => {
-          this.submitError.set(error.status === 429
-            ? 'Trop de tentatives. Veuillez réessayer dans une minute.'
-            : "L'envoi a échoué. Veuillez réessayer ultérieurement.");
+          this.submitError.set(
+            error.status === 429
+              ? 'Trop de tentatives. Veuillez réessayer dans une minute.'
+              : "L'envoi a échoué. Veuillez réessayer ultérieurement.",
+          );
         },
       });
   }
