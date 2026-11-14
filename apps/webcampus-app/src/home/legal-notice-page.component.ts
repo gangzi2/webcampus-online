@@ -19,7 +19,7 @@ import { Component } from '@angular/core';
             </h2>
             <p class="mt-4 leading-relaxed">
               WEBCAMPUS<br />
-              EURL (SARL unipersonnelle) au capital de 1 000 €<br />
+              EURL au capital de 1 000 €<br />
               4 rue Paul Vallier<br />
               38400 Saint-Martin-d'Hères, France<br />
               <a
